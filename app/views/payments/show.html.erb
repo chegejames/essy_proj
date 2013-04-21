@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mode of payment:</b>
+  <%= @payment.mode_of_payment %>
+</p>
+
+<p>
+  <b>Cheque no:</b>
+  <%= @payment.cheque_no %>
+</p>
+
+<p>
+  <b>Bank name:</b>
+  <%= @payment.bank_name %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= @payment.amount %>
+</p>
+
+<p>
+  <b>Total amount:</b>
+  <%= @payment.total_amount %>
+</p>
+
+<p>
+  <b>Balance:</b>
+  <%= @payment.balance %>
+</p>
+
+
+<%= link_to 'Edit', edit_member_payment_path(@member, @payment) %> |
+<%= link_to 'Back', member_payments_path(@member) %>

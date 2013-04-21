@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>First name:</b>
+  <%= @member.First_Name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @member.Last_Name %>
+</p>
+
+<p>
+  <b>Designation:</b>
+  <%= @member.Designation %>
+</p>
+
+<p>
+  <b>Email address:</b>
+  <%= @member.Email_Address %>
+</p>
+
+<p>
+  <b>Cell number:</b>
+  <%= @member.Cell_Number %>
+</p>
+
+<p>
+  <b>Region:</b>
+  <%= @member.Region %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%= @member.active %>
+</p>
+
+
+<%= link_to 'Edit', edit_member_path(@member) %> |
+<%= link_to 'Back', members_path %>

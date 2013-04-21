@@ -1,0 +1,5 @@
+class Payment < ActiveRecord::Base
+  belongs_to :member
+  attr_accessible :amount, :balance, :bank_name, :cheque_no, :mode_of_payment, :total_amount, :invoice, :date
+  Payment_modes = ['cash', 'cheque']
+end

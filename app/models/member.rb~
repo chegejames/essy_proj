@@ -1,0 +1,3 @@
+class Member < ActiveRecord::Base
+  attr_accessible :Cell_Number, :Designation, :Email_Address, :First_Name, :Last_Name, :Region, :active
+end

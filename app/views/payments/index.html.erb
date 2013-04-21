@@ -1,0 +1,32 @@
+<h1>Listing payments</h1>
+
+<table>
+  <tr>
+    <th>Mode of payment</th>
+    <th>Cheque no</th>
+    <th>Bank name</th>
+    <th>Amount</th>
+    <th>Total amount</th>
+    <th>Balance</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @payments.each do |payment| %>
+  <tr>
+    <td><%= payment.mode_of_payment %></td>
+    <td><%= payment.cheque_no %></td>
+    <td><%= payment.bank_name %></td>
+    <td><%= payment.amount %></td>
+    <td><%= payment.total_amount %></td>
+    <td><%= payment.balance %></td>
+    <td><%= link_to 'Show',[@member, payment] %></td>
+    <td><%= link_to 'Destroy', [@member, payment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Payment', new_member_payment_path %>
