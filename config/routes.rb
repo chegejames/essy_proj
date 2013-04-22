@@ -1,5 +1,14 @@
 EssyProj::Application.routes.draw do
 
+  resources :payment_plans
+
+  match 'invoice' => 'members#invoice'
+
+  match 'create_invoice/:group' => 'members#create_invoice', :as => "create_invoice"
+
+
+
+
   resources :members do
      resources :payments
   end

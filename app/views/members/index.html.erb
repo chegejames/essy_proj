@@ -1,6 +1,6 @@
 <h1>Listing members</h1>
 
-<table>
+<table class="table table-striped table-borederd table-condensed table-hover">
   <tr>
     <th>First name</th>
     <th>Last name</th>
@@ -23,9 +23,9 @@
     <td><%= member.Cell_Number %></td>
     <td><%= member.Region %></td>
     <td><%= member.active %></td>
-    <td><%= link_to 'Show', member %></td>
-    <td><%= link_to 'Edit', edit_member_path(member) %></td>
-    <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', member, class: "btn btn-mini btn-info" %></td>
+    <td><%= link_to 'Edit', edit_member_path(member), class: "btn btn-mini btn-warning"%></td>
+    <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini btn-danger" %></td>
   </tr>
 <% end %>
 </table>

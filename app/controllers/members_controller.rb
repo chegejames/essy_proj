@@ -1,4 +1,24 @@
 class MembersController < ApplicationController
+  def invoice
+
+  end
+
+  def create_invoice
+    group = params[:group]
+    case group
+      when "judges"
+        Member.invoice_judges
+      when "magistrates"
+        Member.invoice_magistrates
+      when "kadhis"
+        Member.invoice_kadhis
+    end
+    rescue Exception
+      redirect_to invoice_path, notice: 'Invoice failed.'
+    else
+     redirect_to invoice_path, notice: "#{group} were successfully invoiced"
+  end
+
   # GET /members
   # GET /members.json
   def index

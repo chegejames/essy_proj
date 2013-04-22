@@ -1,5 +1,19 @@
 class Payment < ActiveRecord::Base
   belongs_to :member
   attr_accessible :amount, :balance, :bank_name, :cheque_no, :mode_of_payment, :total_amount, :invoice, :date
+
   Payment_modes = ['cash', 'cheque']
+
+  def get_balance
+    payment = self
+    @balance = payment.member.payments.last.balance
+    payment.balance = (@balance - payment.amount)
+  end
+
+  def update_balance
+    payment = self
+    @balance = payment.member.payments[-2].balance
+    @balance = (@balance - payment.amount)
+    payment.update_attributes(:balance => @balance)
+  end
 end

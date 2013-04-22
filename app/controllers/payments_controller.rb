@@ -3,7 +3,7 @@ class PaymentsController < ApplicationController
   # GET /payments.json
   def index
     @member = Member.find(params[:member_id])
-    @payments = Payment.all
+    @payments = @member.payments
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,6 +15,7 @@ class PaymentsController < ApplicationController
   # GET /payments/1.json
   def show
     @member = Member.find(params[:member_id])
+    @payments = @member.payments
     @payment = Payment.find(params[:id])
 
     respond_to do |format|
@@ -46,9 +47,11 @@ class PaymentsController < ApplicationController
   def create
     @member = Member.find(params[:member_id])
     @payment = @member.payments.build(params[:payment])
+    @payment.get_balance
 
     respond_to do |format|
       if @payment.save
+
         format.html { redirect_to [@member, @payment], notice: 'Payment was successfully created.' }
         format.json { render json: @payment, status: :created, location: @payment }
       else
@@ -60,12 +63,14 @@ class PaymentsController < ApplicationController
 
   # PUT /payments/1
   # PUT /payments/1.json
+  #FIXME not updating again!!!!!
   def update
+    @member = Member.find(params[:member_id])
     @payment = Payment.find(params[:id])
-
+    @payment.update_balance
     respond_to do |format|
       if @payment.update_attributes(params[:payment])
-        format.html { redirect_to @payment, notice: 'Payment was successfully updated.' }
+        format.html { redirect_to [@member, @payment], notice: 'Payment was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

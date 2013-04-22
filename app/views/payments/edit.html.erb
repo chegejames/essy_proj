@@ -1,6 +1,10 @@
+<div class="row">
+  <div class="span10 offset3">
 <h1>Editing payment</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @payment %> |
-<%= link_to 'Back', payments_path %>
+<li class="btn btn-small"><%= link_to 'Show', [@member, @payment] %></li> |
+<li class="btn btn-small"><%= link_to 'Back', member_payments_path(@member) %></li>
+  </div>
+</div>

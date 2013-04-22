@@ -1,40 +1,33 @@
-<p id="notice"><%= notice %></p>
+<span class="label label-sucess"><%= notice %></span>
 
-<p>
-  <b>First name:</b>
-  <%= @member.First_Name %>
-</p>
+<table class="table table-striped table-borederd table-condensed table-hover">
+  <tr>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Designation</th>
+    <th>Email address</th>
+    <th>Cell number</th>
+    <th>Region</th>
+    <th>Active</th>
+    <th></th>
+  </tr>
 
-<p>
-  <b>Last name:</b>
-  <%= @member.Last_Name %>
-</p>
+  <tr>
+    <td><%= @member.First_Name %></td>
+    <td><%= @member.Last_Name %></td>
+    <td><%= @member.Designation %></td>
+    <td><%= @member.Email_Address %></td>
+    <td><%= @member.Cell_Number %></td>
+    <td><%= @member.Region %></td>
+    <td><%= @member.active %></td>
 
-<p>
-  <b>Designation:</b>
-  <%= @member.Designation %>
-</p>
+    <td><%= link_to 'Edit', edit_member_path(@member), class: "btn btn-mini btn-warning"%></td>
+  </tr>
 
-<p>
-  <b>Email address:</b>
-  <%= @member.Email_Address %>
-</p>
-
-<p>
-  <b>Cell number:</b>
-  <%= @member.Cell_Number %>
-</p>
-
-<p>
-  <b>Region:</b>
-  <%= @member.Region %>
-</p>
-
-<p>
-  <b>Active:</b>
-  <%= @member.active %>
-</p>
+</table>
 
 
-<%= link_to 'Edit', edit_member_path(@member) %> |
-<%= link_to 'Back', members_path %>
+<%= link_to 'Back', members_path, class: "btn" %>
+
+<%= link_to 'view payments', member_payments_path(@member), class: "btn  btn-primary"%>
+<%= link_to "Make a payment", new_member_payment_path(@member), class: "btn btn-primary"%>

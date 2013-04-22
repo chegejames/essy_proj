@@ -1,0 +1,29 @@
+<h1>Listing payment_plans</h1>
+
+<table class="table table-striped table-bordered table-hover table-condensed">
+  <tr>
+    <th>Judge</th>
+    <th>Magistrate</th>
+    <th>Kadhi</th>
+    <th>As of </th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @payment_plans.each do |payment_plan| %>
+  <tr>
+    <td><%= payment_plan.Judge %></td>
+    <td><%= payment_plan.Magistrate %></td>
+    <td><%= payment_plan.Kadhi %></td>
+    <td><%= payment_plan.created_at.to_date%></td>
+    <td><%= link_to 'Show', payment_plan, class: "btn btn-mini btn-info"%></td>
+    <td><%= link_to 'Edit', edit_payment_plan_path(payment_plan), class: "btn btn-mini btn-warning" %></td>
+    <td><%= link_to 'Destroy', payment_plan, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini btn-danger" %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Payment plan', new_payment_plan_path %>

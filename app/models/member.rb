@@ -2,10 +2,56 @@ class Member < ActiveRecord::Base
   attr_accessible :Cell_Number, :Designation, :Email_Address, :First_Name, :Last_Name, :Region, :date, :active
   has_many :payments
   Designations = ['Judge', 'Magistrate', 'Kadhi']
-  Regions = ['Central', 'Easter', 'Western']
+  Regions = ['Nairobi', 'N. Rift ', 'S. Rift', 'L. Eastern', 'Eastern N', 'N. Eastern', 'N. Nyanza', 'S. Nyanza', 'Embu','Mt. Kenya', 'Kakamega /VHG','Bungoma /Busia', 'Coast']
 
   scope :judges, where(:Designation => "Judge")
-  scope :magistrates, where(:Designatin => "Magistrate")
+  scope :active, where(:active => true)
+  scope :magistrates, where(:Designation => "Magistrate")
   scope :kadhis, where(:Designation => "Kadhi")
+  scope :except_judges, where('Designation = "Magistrate" OR Designation = "Kadhi"')
+
+
+  validates :First_Name, :Last_Name, :Region, :Designation, presence: true
+  validates :Email_Address, presence: true
+
+  after_save :create_first_invoice
+
+  def self.invoice_magistrates
+    Member.magistrates.active.includes(:payments).each do | member|
+      amount_to_pay = PaymentPlan.last.Magistrate
+      member.payments.create(:invoice => amount_to_pay, :amount => amount_to_pay, :balance => 0, :date => Time.now.to_date)
+    end
+  end
+
+   def self.invoice_kadhis
+    Member.kadhis.active.includes(:payments).each do | member|
+      amount_to_pay = PaymentPlan.last.Kadhi
+      member.payments.create(:invoice => amount_to_pay, :amount => amount_to_pay, :balance => 0, :date => Time.now.to_date)
+    end
+  end
+
+  def self.invoice_judges
+    Member.judges.active.includes(:payments).each do |judge|
+      amount_to_pay = PaymentPlan.last.Judge
+      balance = judge.payments.last.balance + amount_to_pay
+      judge.payments.create(:date => Time.now.beginning_of_year.to_date, :invoice => amount_to_pay, :balance => balance)
+    end
+  end
+
+  def create_first_invoice
+    member = self
+    @payment_plan = PaymentPlan.last
+    designation = member.Designation
+    if designation == "Judge"
+      amount_to_pay =  @payment_plan.Judge
+      member.payments.create(:date => Time.now.beginning_of_year.to_date, :invoice => amount_to_pay, :balance => amount_to_pay)
+    elsif designation == "Magistrate"
+      amount_to_pay = @payment_plan.Magistrate
+      member.payments.create(:date => Time.now.beginning_of_month.to_date, :invoice => amount_to_pay, :balance => 0, :amount => amount_to_pay)
+    else
+      amount_to_pay = @payment_plan.Kadhi
+      member.payments.create(:date => Time.now.beginning_of_year.to_date, :invoice => amount_to_pay, :balance => 0, :amount => amount_to_pay)
+    end
+  end
 
 end

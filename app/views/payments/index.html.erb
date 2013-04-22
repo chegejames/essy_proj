@@ -1,32 +1,39 @@
-<h1>Listing payments</h1>
+<ul class="breadcrumb">
+  <li><%= link_to "#{@member.First_Name+ " " + @member.Last_Name}", @member %><span class="divider">/</span></li>
+  <li class="active">payments</li>
+</ul>
+<section>
+  <h1>Listing payments</h1>
 
-<table>
-  <tr>
-    <th>Mode of payment</th>
-    <th>Cheque no</th>
-    <th>Bank name</th>
-    <th>Amount</th>
-    <th>Total amount</th>
-    <th>Balance</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <table class="table table-striped table-bordered table-hover table-condensed">
+    <tr>
+     <th>Date</th>
+     <th>Invoice</th>
+     <th>Mode of payment</th>
+     <th>Cheque no</th>
+     <th>Bank name</th>
+     <th>Amount</th>
+     <th>Balance</th>
+     <th></th>
+     <th></th>
+    </tr>
 
-<% @payments.each do |payment| %>
-  <tr>
-    <td><%= payment.mode_of_payment %></td>
-    <td><%= payment.cheque_no %></td>
-    <td><%= payment.bank_name %></td>
-    <td><%= payment.amount %></td>
-    <td><%= payment.total_amount %></td>
-    <td><%= payment.balance %></td>
-    <td><%= link_to 'Show',[@member, payment] %></td>
-    <td><%= link_to 'Destroy', [@member, payment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+  <% @payments.each do |payment| %>
+    <tr>
+      <td><%= payment.date%></td>
+      <td><%= payment.invoice%></td>
+      <td><%= payment.mode_of_payment %></td>
+      <td><%= payment.cheque_no %></td>
+      <td><%= payment.bank_name %></td>
+      <td><%= payment.amount %></td>
+      <td><%= payment.balance %></td>
+      <td><li class="btn btn-mini btn-info"><%= link_to 'Show',[@member, payment]%></li></td>
+      <td><li class="btn btn-danger btn-mini"><%= link_to 'Destroy', [@member, payment], method: :delete, data: { confirm: 'Are you sure?' }%></li></td>
+    </tr>
+  <% end %>
+  </table>
 
-<br />
+  <br />
 
-<%= link_to 'New Payment', new_member_payment_path %>
+  <%= link_to "Back", @member, class: "btn"%>
+</section>

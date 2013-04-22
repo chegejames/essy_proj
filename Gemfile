@@ -45,3 +45,6 @@ group :test do
   gem 'rspec-rails'
   gem 'capybara'
 end
+
+gem 'will_paginate'
+gem 'bootstrap-sass'

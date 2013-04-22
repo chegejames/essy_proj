@@ -1,0 +1,29 @@
+<%= form_for(@payment_plan) do |f| %>
+  <% if @payment_plan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@payment_plan.errors.count, "error") %> prohibited this payment_plan from being saved:</h2>
+
+      <ul>
+      <% @payment_plan.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+    <%= f.label :Judge %><br />
+    <%= f.number_field :Judge %>
+
+
+    <%= f.label :Magistrate %><br />
+    <%= f.number_field :Magistrate %>
+
+
+    <%= f.label :Kadhi %><br />
+    <%= f.number_field :Kadhi %><br/ >
+
+
+    <%= f.submit class: "btn btn-large btn-primary" %>
+
+<% end %>

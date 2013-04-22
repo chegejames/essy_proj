@@ -1,0 +1,21 @@
+<span class="label label-success"><%= notice %></span>
+<table class="table table-striped table-bordered table-hover table-condensed">
+  <tr>
+    <th>Judge</th>
+    <th>Magistrate</th>
+    <th>Kadhi</th>
+    <th>As of </th>
+    <th></th>
+  </tr>
+  <tr>
+    <td><%= @payment_plan.Judge %></td>
+    <td><%= @payment_plan.Magistrate %></td>
+    <td><%= @payment_plan.Kadhi %></td>
+    <td><%= @payment_plan.created_at.to_date%></td>
+    <td><%= link_to 'Edit', edit_payment_plan_path(@payment_plan), class: "btn btn-warning btn-mini"%></td>
+
+  </tr>
+</table>
+
+
+<%= link_to 'Back', payment_plans_path, class: "btn" %>

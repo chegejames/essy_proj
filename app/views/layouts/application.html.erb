@@ -7,8 +7,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<header>
+<nav class="navbar navbar-fixed-top">
+  <section class="navbar-inner">
+    <a class="brand">Name</a>
+    <ul class="nav pull-right">
+      <li class="active"><%= link_to "Members", members_path%></li>
+      <li><%= link_to "Payment plans", payment_plans_path%></li>
+      <li><%= link_to "Invoice", invoice_path%></li>
+    </ul>
+  </section>
+</nav>
+</header>
+<section id="main">
 <%= yield %>
+</section>
 
 </body>
 </html>
