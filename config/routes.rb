@@ -1,5 +1,19 @@
 EssyProj::Application.routes.draw do
 
+  get "welcome/index"
+
+  get "admin/index"
+
+  match 'admin' => 'admin#index'
+
+  controller :sessions do
+    get 'login' => :new
+    post 'login' => :create
+    delete 'logout' => :destroy
+  end
+  resources :users
+
+
   resources :payment_plans
 
   match 'invoice' => 'members#invoice'
@@ -63,7 +77,7 @@ EssyProj::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+   root :to => 'welcome#index', as: 'index'
 
   # See how all your routes lay out with "rake routes"
 

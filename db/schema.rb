@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130422030157) do
+ActiveRecord::Schema.define(:version => 20130422224938) do
 
   create_table "members", :force => true do |t|
     t.string   "First_Name"
@@ -48,5 +48,13 @@ ActiveRecord::Schema.define(:version => 20130422030157) do
   end
 
   add_index "payments", ["member_id"], :name => "index_payments_on_member_id"
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "hashed_password"
+    t.string   "salt"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
 end

@@ -11,11 +11,15 @@
 <nav class="navbar navbar-fixed-top">
   <section class="navbar-inner">
     <a class="brand">Name</a>
+    <%if session[:user_id]%>
     <ul class="nav pull-right">
-      <li class="active"><%= link_to "Members", members_path%></li>
       <li><%= link_to "Payment plans", payment_plans_path%></li>
+      <li class="active"><%= link_to "Members", members_path%></li>
       <li><%= link_to "Invoice", invoice_path%></li>
+      <li><%= link_to 'Users', users_path%></li>
+      <li><%= link_to 'Logout', logout_path, :method => :delete %></li>
     </ul>
+    <%end%>
   </section>
 </nav>
 </header>
