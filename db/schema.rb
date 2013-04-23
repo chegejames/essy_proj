@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20130422224938) do
     t.string   "Cell_Number"
     t.string   "Region"
     t.boolean  "active"
+    t.integer  "balance"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end

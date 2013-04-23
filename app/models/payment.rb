@@ -16,4 +16,10 @@ class Payment < ActiveRecord::Base
     @balance = (@balance - payment.amount)
     payment.update_attributes(:balance => @balance)
   end
+
+  def update_member_balance
+    member = self.member
+    balance = self.balance
+    member.update_attributes(:balance => balance)
+  end
 end

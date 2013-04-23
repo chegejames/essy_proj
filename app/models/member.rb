@@ -1,5 +1,5 @@
 class Member < ActiveRecord::Base
-  attr_accessible :Cell_Number, :Designation, :Email_Address, :First_Name, :Last_Name, :Region, :date, :active
+  attr_accessible :Cell_Number, :Designation, :Email_Address, :First_Name, :Last_Name, :Region, :date, :active, :balance
   has_many :payments
   Designations = ['Judge', 'Magistrate', 'Kadhi']
   Regions = ['Nairobi', 'N. Rift ', 'S. Rift', 'L. Eastern', 'Eastern N', 'N. Eastern', 'N. Nyanza', 'S. Nyanza', 'Embu','Mt. Kenya', 'Kakamega /VHG','Bungoma /Busia', 'Coast']
@@ -9,6 +9,7 @@ class Member < ActiveRecord::Base
   scope :magistrates, where(:Designation => "Magistrate")
   scope :kadhis, where(:Designation => "Kadhi")
   scope :except_judges, where('Designation = "Magistrate" OR Designation = "Kadhi"')
+  scope :with_balance, where('balance > 0')
 
 
   validates :First_Name, :Last_Name, :Region, :Designation, presence: true
@@ -42,15 +43,17 @@ class Member < ActiveRecord::Base
     member = self
     @payment_plan = PaymentPlan.last
     designation = member.Designation
+    active = member.active
     if designation == "Judge"
       amount_to_pay =  @payment_plan.Judge
       member.payments.create(:date => Time.now.beginning_of_year.to_date, :invoice => amount_to_pay, :balance => amount_to_pay)
-    elsif designation == "Magistrate"
+      #member.update_attributes(:balance => amount_to_pay)
+    elsif designation == "Magistrate" && active == true
       amount_to_pay = @payment_plan.Magistrate
       member.payments.create(:date => Time.now.beginning_of_month.to_date, :invoice => amount_to_pay, :balance => 0, :amount => amount_to_pay)
-    else
+    elsif designation == "Kadhi" && active == true
       amount_to_pay = @payment_plan.Kadhi
-      member.payments.create(:date => Time.now.beginning_of_year.to_date, :invoice => amount_to_pay, :balance => 0, :amount => amount_to_pay)
+      member.payments.create(:date => Time.now.beginning_of_month.to_date, :invoice => amount_to_pay, :balance => 0, :amount => amount_to_pay)
     end
   end
 

@@ -49,8 +49,10 @@ class PaymentsController < ApplicationController
     @payment = @member.payments.build(params[:payment])
     @payment.get_balance
 
+
     respond_to do |format|
       if @payment.save
+        @payment.update_member_balace
 
         format.html { redirect_to [@member, @payment], notice: 'Payment was successfully created.' }
         format.json { render json: @payment, status: :created, location: @payment }

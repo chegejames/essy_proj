@@ -8,6 +8,7 @@ class CreateMembers < ActiveRecord::Migration
       t.string :Cell_Number
       t.string :Region
       t.boolean :active
+      t.integer :balance
 
       t.timestamps
     end
