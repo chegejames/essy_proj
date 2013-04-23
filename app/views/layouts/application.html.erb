@@ -19,6 +19,10 @@
       <li><%= link_to 'Users', users_path%></li>
       <li><%= link_to 'Logout', logout_path, :method => :delete %></li>
     </ul>
+    <%else%>
+      <ul class="nav pull-right">
+       <li> <%= link_to "Sign in", login_path%><li>
+      </ul>
     <%end%>
   </section>
 </nav>
