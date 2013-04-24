@@ -1,0 +1,29 @@
+<table class="table table-striped table-borederd table-condensed table-hover">
+  <tr>
+    <th><%= sortable "first_name" ,"First Name"%></th>
+    <th><%= sortable "last_name", "Last Name" %></th>
+    <th><%= sortable "designation"%></th>
+    <th>Email address</th>
+    <th>Cell number</th>
+    <th><%= sortable "region", "Region"%></th>
+    <th><%= sortable "active", "Active"%></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @members.each do |member| %>
+  <tr>
+    <td><%= member.first_name %></td>
+    <td><%= member.last_name %></td>
+    <td><%= member.designation %></td>
+    <td><%= member.email_address %></td>
+    <td><%= member.cell_number %></td>
+    <td><%= member.region %></td>
+    <td><%= member.active %></td>
+    <td><%= link_to 'Show', member, class: "btn btn-mini btn-info" %></td>
+    <td><%= link_to 'Edit', edit_member_path(member), class: "btn btn-mini btn-warning"%></td>
+    <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini btn-danger" %></td>
+  </tr>
+<% end %>
+</table>

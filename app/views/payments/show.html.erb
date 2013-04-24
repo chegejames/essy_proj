@@ -1,5 +1,5 @@
 <ul class="breadcrumb">
-        <li><%= link_to "#{@member.First_Name+ " " + @member.Last_Name}", @member%><span class="divider">/</span></li>
+        <li><%= link_to "#{@member.first_name+ " " + @member.last_name}", @member%><span class="divider">/</span></li>
         <li><%= link_to "payments", member_payments_path(@member)%><span class="divider">/</span></li>
         <li class="active">payment</li>
 </ul>
