@@ -1,4 +1,4 @@
-<span class="label label-sucess"><%= notice %></span>
+<span class="label label-success"><%= notice %></span>
 
 <table class="table table-striped table-borederd table-condensed table-hover">
   <tr>
@@ -30,4 +30,6 @@
 <%= link_to 'Back', members_path, class: "btn" %>
 
 <%= link_to 'view payments', member_payments_path(@member), class: "btn  btn-primary"%>
+<%if @member.Designation == "Judge"%>
 <%= link_to "Make a payment", new_member_payment_path(@member), class: "btn btn-primary"%>
+<%end%>

@@ -1,11 +1,33 @@
 class MembersController < ApplicationController
-  def invoice
-
+  helper_method :sort_column, :sort_direction
+  def sort_column
+    params[:sort] || "name"
   end
 
-  def create_invoice
-    group = params[:group]
-    case group
+ def sort_direction
+  %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
+ end
+
+ def search
+   @members = Member.search(params[:first], params[:last])
+
+   respond_to do |format|
+     if @members.present?
+       format.html
+       format.json { render json: @members }
+     else
+       format.html {redirect_to members_path, notice: "No results found"}
+     end
+   end
+ end
+
+ def invoice
+
+ end
+
+ def create_invoice
+   group = params[:group]
+   case group
       when "judges"
         Member.invoice_judges
       when "magistrates"
@@ -22,7 +44,7 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    @members = Member.all
+    @members = Member.order("#{params[:sort]}" + ' ' + "#{params[:direction]}")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -64,6 +86,7 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       if @member.save
+        @member.create_first_invoice
         format.html { redirect_to @member, notice: 'Member was successfully created.' }
         format.json { render json: @member, status: :created, location: @member }
       else

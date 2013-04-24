@@ -2,10 +2,10 @@ EssyProj::Application.routes.draw do
 
   get "welcome/index"
 
-  get "admin/index"
 
-  match 'admin' => 'admin#index'
+  match 'judges_with_late_payments' => 'admin#index'
 
+  match 'all_payments' => 'admin#all_payments'
   controller :sessions do
     get 'login' => :new
     post 'login' => :create
@@ -17,6 +17,8 @@ EssyProj::Application.routes.draw do
   resources :payment_plans
 
   match 'invoice' => 'members#invoice'
+
+  match 'search' => 'members#search'
 
   match 'create_invoice/:group' => 'members#create_invoice', :as => "create_invoice"
 

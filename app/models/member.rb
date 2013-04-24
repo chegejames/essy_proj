@@ -15,7 +15,19 @@ class Member < ActiveRecord::Base
   validates :First_Name, :Last_Name, :Region, :Designation, presence: true
   validates :Email_Address, presence: true
 
-  after_save :create_first_invoice
+
+
+  def self.search(first, last)
+    if first.present? && last.present?
+      find(:all, :conditions => ['First_Name LIKE ? and Last_Name LIKE ?', "%#{first}%", "%#{last}%"])
+    elsif first.present?
+      find(:all, :conditions => ['First_Name LIKE ?', "%#{first}%"])
+    elsif last.present?
+      find(:all, :conditions => ['Last_Name LIKE ?',"%#{last}%"])
+    else
+      return nil
+    end
+  end
 
   def self.invoice_magistrates
     Member.magistrates.active.includes(:payments).each do | member|
@@ -36,6 +48,7 @@ class Member < ActiveRecord::Base
       amount_to_pay = PaymentPlan.last.Judge
       balance = judge.payments.last.balance + amount_to_pay
       judge.payments.create(:date => Time.now.beginning_of_year.to_date, :invoice => amount_to_pay, :balance => balance)
+      judge.update_attributes(:balance => balance)
     end
   end
 
@@ -47,7 +60,7 @@ class Member < ActiveRecord::Base
     if designation == "Judge"
       amount_to_pay =  @payment_plan.Judge
       member.payments.create(:date => Time.now.beginning_of_year.to_date, :invoice => amount_to_pay, :balance => amount_to_pay)
-      #member.update_attributes(:balance => amount_to_pay)
+      member.update_attributes(:balance => amount_to_pay)
     elsif designation == "Magistrate" && active == true
       amount_to_pay = @payment_plan.Magistrate
       member.payments.create(:date => Time.now.beginning_of_month.to_date, :invoice => amount_to_pay, :balance => 0, :amount => amount_to_pay)

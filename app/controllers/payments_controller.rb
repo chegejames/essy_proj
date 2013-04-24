@@ -52,7 +52,7 @@ class PaymentsController < ApplicationController
 
     respond_to do |format|
       if @payment.save
-        @payment.update_member_balace
+        @payment.update_member_balance
 
         format.html { redirect_to [@member, @payment], notice: 'Payment was successfully created.' }
         format.json { render json: @payment, status: :created, location: @payment }
