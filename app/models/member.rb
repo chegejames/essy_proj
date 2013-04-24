@@ -26,7 +26,7 @@ class Member < ActiveRecord::Base
       User.create(:name => "hall")
     elsif last.present?
       find(:all, :conditions => ["Last_Name LIKE ?","%#{last}%"])
-      User.create(:
+      User.create(:name => "mike")
     else
       return nil
     end
