@@ -28,17 +28,6 @@ class Member < ActiveRecord::Base
     end
   end
 
-  def self.search(first, last)
-    if first.present? && last.present?
-      Member.where(["first_name LIKE ? AND last_name LIKE ?", "%#{first}%", "%#{last}%"])
-    elsif first.present?
-      Member.where(["first_name LIKE ?", "%#{first}%"])
-    elsif last.present?
-      Member.where(["last_name LIKE ?","%#{last}%"])
-    else
-      return Member.where(:id => nil)
-    end
-  end
 
   def self.invoice_magistrates
     Member.magistrates.active.includes(:payments).each do | member|

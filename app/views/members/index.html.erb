@@ -1,5 +1,11 @@
-<span class="label label-warning"><%= notice%></span>
+<%if @members.empty?%>
+<span class="label label-warning">sorry no members found</span>
+<%else%>
+<span class="label label-success"><%= pluralize(@members.count, 'member') %> found</span>
+<%end%>
 <h1>All members</h1>
+<%= render 'search'%>
+
 
 <%= render 'table'%>
 

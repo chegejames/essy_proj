@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>EssyProj</title>
+  <title>kenya Magistrates and Judges Association</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -10,10 +10,10 @@
 <header>
 <nav class="navbar navbar-fixed-top">
   <section class="navbar-inner">
-    <a class="brand">Name</a>
+    <a class="brand">kenya Magistrates and Judges Association </a>
     <%if session[:user_id]%>
     <ul class="nav pull-right">
-      <li><%= link_to "Late payments", judges_with_late_payments_path%></li>
+      <li><%= link_to "Home", home_path%></li>
       <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
         Payment Charges <b class="caret"></b>
@@ -34,6 +34,7 @@
       </li>
       <li><%= link_to "Invoice", invoice_path%></li>
       <li><%= link_to "Payments", all_payments_path%></li>
+      <li><%= link_to "Late payments", judges_with_late_payments_path%></li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
          Users<b class="caret"></b>
@@ -56,13 +57,7 @@
 </nav>
 </header>
 <section id="main">
-<%if session[:user_id]%>
-<%= form_tag search_path, :method => 'get', :class => "form-search pull-right" do %>
-  <%= text_field_tag :first, params[:first], placeholder: "First Name"%>
-  <%= text_field_tag :last, params[:last], placeholder: "Last Name"%>
-  <%= submit_tag "Search", :name => nil, class: "btn"%>
-<%end%>
-<%end%>
+
 <%= yield %>
 </section>
 

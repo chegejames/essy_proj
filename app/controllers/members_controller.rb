@@ -1,17 +1,4 @@
 class MembersController < ApplicationController
-  
- def search
-   @members = Member.paginate(:page => params[:page], :per_page => 20).search(params[:first], params[:last]).order("#{params[:sort]}" + ' ' + "#{params[:direction]}")
-
-   respond_to do |format|
-     if @members.present?
-       format.html
-       format.json { render json: @members }
-     else
-       format.html {redirect_to members_path, notice: "No results found"}
-     end
-   end
- end
 
  def invoice
 
@@ -36,7 +23,9 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    @members = Member.paginate(:page => params[:page], :per_page => 20).order("#{params[:sort]}" + ' ' + "#{params[:direction]}")
+    @search = Member.paginate(:page => params[:page], :per_page => 20).search(params[:q])
+    @members = @search.result
+    @search.build_sort if @search.sorts.empty?
 
     respond_to do |format|
       format.html # index.html.erb

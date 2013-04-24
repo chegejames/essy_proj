@@ -1,0 +1,8 @@
+<%= search_form_for @search, html: {class: "form-search"} do |f|%>
+  <%= f.text_field :first_name_cont, placeholder: "Fisrt Name"%>
+  <%= f.text_field :last_name_cont, placeholder: "Last Name"%>
+  <%= f.select :designation_eq, Member::Designations, prompt: "Designation"%>
+  <%= f.select :region_eq, Member::Regions, prompt: "Regions"%>
+  <%= f.select :active_eq, ['true', 'false'], prompt: "Active?"%>
+  <%= f.submit "Search", class: "btn"%>
+<%end%>

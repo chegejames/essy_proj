@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   def User.encrypt_password(password, salt)
     Digest::SHA2.hexdigest(password + "wibble" + salt)
   end
-  # 'password' is a virtual attribute
+
   def password=(password)
     @password = password
     if password.present?

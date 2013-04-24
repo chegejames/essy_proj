@@ -4,6 +4,7 @@ EssyProj::Application.routes.draw do
 
 
   match 'judges_with_late_payments' => 'admin#index'
+  match 'home' => 'admin#home'
 
   match 'all_payments' => 'admin#all_payments'
   controller :sessions do
@@ -26,7 +27,7 @@ EssyProj::Application.routes.draw do
 
 
   resources :members do
-     resources :payments
+    resources :payments
   end
 
 
