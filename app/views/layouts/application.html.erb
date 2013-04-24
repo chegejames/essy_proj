@@ -57,9 +57,10 @@
 </header>
 <section id="main">
 <%if session[:user_id]%>
+<span class="label label-warning">search query works with sqlite has issues with postgre which is what heroku uses</span>
 <%= form_tag search_path, :method => 'get', :class => "form-search pull-right" do %>
-  <%= text_field_tag :first, params[:first], placeholder: "First Name"%>
-  <%= text_field_tag :last, params[:last], placeholder: "Last Name"%>
+  <%= text_field_tag :first, params[:first], placeholder: "First Name", disabled: true%>
+  <%= text_field_tag :last, params[:last], placeholder: "Last Name", disabled: true%>
   <%= submit_tag "Search", :name => nil, class: "btn"%>
 <%end%>
 <%end%>

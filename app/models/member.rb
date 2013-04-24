@@ -19,14 +19,11 @@ class Member < ActiveRecord::Base
 
   def self.search(first, last)
     if first.present? && last.present?
-      Member.find(:all, :conditions => [""First_Name" LIKE ? AND "Last_Name" LIKE ?", "%#{first}%", "%#{last}%"])
-      User.create(:Fisrt_Name => "chege")
+      find(:all, :conditions => ["First_Name LIKE ? AND Last_Name LIKE ?", "%#{first}%", "%#{last}%"])
     elsif first.present?
-      Member.find(:all, :conditions => [""First_Name" LIKE ?", "%#{first}%"])
-      User.create(:name => "hall")
+      find(:all, :conditions => ["First_Name LIKE ?", "%#{first}%"])
     elsif last.present?
-      Member.find(:all, :conditions => [""Last_Name" LIKE ?","%#{last}%"])
-      User.create(:name => "mike")
+      find(:all, :conditions => ["Last_Name LIKE ?","%#{last}%"])
     else
       return nil
     end
