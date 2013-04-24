@@ -16,15 +16,16 @@
   <% @payments.each do |payment| %>
     <tr>
       <td><%= payment.date%></td>
-      <td><%= payment.member.First_Name%></td>
-      <td><%= payment.member.Last_Name%></td>
+      <td><%= payment.member.first_name%></td>
+      <td><%= payment.member.last_name%></td>
       <td><%= payment.invoice%></td>
       <td><%= payment.amount %></td>
       <td><%= payment.balance %></td>
-      <td><li class="btn btn-mini btn-info"><%= link_to 'Show',[payment.member, payment]%></li></td>
-      <td><li class="btn btn-danger btn-mini"><%= link_to 'Destroy', [payment.member, payment], method: :delete, data: { confirm: 'Are you sure?' }%></li></td>
+      <td><%= link_to 'Show',[payment.member, payment], class:"btn btn-mini btn-info"%></td>
+      <td><%= link_to 'Destroy', [payment.member, payment], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-mini"%></td>
     </tr>
   <% end %>
   </table>
 
   <br />
+<%= will_paginate @payments%>

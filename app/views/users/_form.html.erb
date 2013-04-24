@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
+
     <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
+    <%= f.text_field :name, autofocus: true, required: true %>
+
+
     <%= f.label :password %><br />
-    <%= f.text_field :password %>
-  </div>
-  <div class="field">
+    <%= f.password_field :password, required: true %>
+
+
     <%= f.label :password_confirmation %><br />
-    <%= f.text_field :password_confirmation %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.password_field :password_confirmation, required: true %><br />
+
+
+    <%= f.submit class: "btn btn-primary btn-large" %>
+
 <% end %>

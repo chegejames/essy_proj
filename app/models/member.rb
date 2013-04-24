@@ -1,53 +1,64 @@
 class Member < ActiveRecord::Base
-  attr_accessible :Cell_Number, :Designation, :Email_Address, :First_Name, :Last_Name, :Region, :date, :active, :balance
-  has_many :payments
+  attr_accessible :cell_number, :designation, :email_address, :first_name, :last_name, :region, :date, :active, :balance
+  has_many :payments, dependent: :destroy
   Designations = ['Judge', 'Magistrate', 'Kadhi']
   Regions = ['Nairobi', 'N. Rift ', 'S. Rift', 'L. Eastern', 'Eastern N', 'N. Eastern', 'N. Nyanza', 'S. Nyanza', 'Embu','Mt. Kenya', 'Kakamega /VHG','Bungoma /Busia', 'Coast']
 
-  scope :judges, where(:Designation => "Judge")
+ # include ActiveModel::Dirty
+  after_update :create_first_invoice, :if => :has_been_activated?
+  scope :judges, where(:designation => "Judge")
   scope :active, where(:active => true)
-  scope :magistrates, where(:Designation => "Magistrate")
-  scope :kadhis, where(:Designation => "Kadhi")
-  scope :except_judges, where('Designation = "Magistrate" OR Designation = "Kadhi"')
+  scope :magistrates, where(:designation => "Magistrate")
+  scope :kadhis, where(:designation => "Kadhi")
+  scope :except_judges, where('designation = "Magistrate" OR designation = "Kadhi"')
   scope :with_balance, where('balance > 0')
 
 
-  validates :First_Name, :Last_Name, :Region, :Designation, presence: true
-  validates :Email_Address, presence: true
+  validates :first_name, :last_name, :region, :designation, presence: true
+  validates :email_address, presence: true, uniqueness: true, format: {with: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/}
 
 
+  def ever_active?
+    self.balance.present?
+  end
+
+  def has_been_activated?
+    if self.ever_active? == false
+      self.active_changed?
+    end
+  end
 
   def self.search(first, last)
     if first.present? && last.present?
-      find(:all, :conditions => ["First_Name LIKE ? AND Last_Name LIKE ?", "%#{first}%", "%#{last}%"])
+      Member.where(["first_name LIKE ? AND last_name LIKE ?", "%#{first}%", "%#{last}%"])
     elsif first.present?
-      find(:all, :conditions => ["First_Name LIKE ?", "%#{first}%"])
+      Member.where(["first_name LIKE ?", "%#{first}%"])
     elsif last.present?
-      find(:all, :conditions => ["Last_Name LIKE ?","%#{last}%"])
+      Member.where(["last_name LIKE ?","%#{last}%"])
     else
-      return nil
+      return Member.where(:id => nil)
     end
   end
 
   def self.invoice_magistrates
     Member.magistrates.active.includes(:payments).each do | member|
-      amount_to_pay = PaymentPlan.last.Magistrate
+      amount_to_pay = PaymentPlan.last.magistrate
       member.payments.create(:invoice => amount_to_pay, :amount => amount_to_pay, :balance => 0, :date => Time.now.to_date)
     end
   end
 
    def self.invoice_kadhis
     Member.kadhis.active.includes(:payments).each do | member|
-      amount_to_pay = PaymentPlan.last.Kadhi
+      amount_to_pay = PaymentPlan.last.kadhi
       member.payments.create(:invoice => amount_to_pay, :amount => amount_to_pay, :balance => 0, :date => Time.now.to_date)
     end
   end
 
   def self.invoice_judges
     Member.judges.active.includes(:payments).each do |judge|
-      amount_to_pay = PaymentPlan.last.Judge
+      amount_to_pay = PaymentPlan.last.judge
       balance = judge.payments.last.balance + amount_to_pay
-      judge.payments.create(:date => Time.now.beginning_of_year.to_date, :invoice => amount_to_pay, :balance => balance)
+      judge.payments.create!(:date => Time.now.beginning_of_year.to_date, :invoice => amount_to_pay, :amount => 0, :balance => balance)
       judge.update_attributes(:balance => balance)
     end
   end
@@ -55,17 +66,17 @@ class Member < ActiveRecord::Base
   def create_first_invoice
     member = self
     @payment_plan = PaymentPlan.last
-    designation = member.Designation
+    designation = member.designation
     active = member.active
-    if designation == "Judge"
-      amount_to_pay =  @payment_plan.Judge
-      member.payments.create(:date => Time.now.beginning_of_year.to_date, :invoice => amount_to_pay, :balance => amount_to_pay)
+    if designation == "Judge" && active == true
+      amount_to_pay =  @payment_plan.judge
+      member.payments.create(:date => Time.now.beginning_of_year.to_date, :amount => 0, :invoice => amount_to_pay, :balance => amount_to_pay)
       member.update_attributes(:balance => amount_to_pay)
     elsif designation == "Magistrate" && active == true
-      amount_to_pay = @payment_plan.Magistrate
+      amount_to_pay = @payment_plan.magistrate
       member.payments.create(:date => Time.now.beginning_of_month.to_date, :invoice => amount_to_pay, :balance => 0, :amount => amount_to_pay)
     elsif designation == "Kadhi" && active == true
-      amount_to_pay = @payment_plan.Kadhi
+      amount_to_pay = @payment_plan.kadhi
       member.payments.create(:date => Time.now.beginning_of_month.to_date, :invoice => amount_to_pay, :balance => 0, :amount => amount_to_pay)
     end
   end

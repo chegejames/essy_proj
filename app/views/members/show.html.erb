@@ -13,12 +13,12 @@
   </tr>
 
   <tr>
-    <td><%= @member.First_Name %></td>
-    <td><%= @member.Last_Name %></td>
-    <td><%= @member.Designation %></td>
-    <td><%= @member.Email_Address %></td>
-    <td><%= @member.Cell_Number %></td>
-    <td><%= @member.Region %></td>
+    <td><%= @member.first_name %></td>
+    <td><%= @member.last_name %></td>
+    <td><%= @member.designation %></td>
+    <td><%= @member.email_address %></td>
+    <td><%= @member.cell_number %></td>
+    <td><%= @member.region %></td>
     <td><%= @member.active %></td>
 
     <td><%= link_to 'Edit', edit_member_path(@member), class: "btn btn-mini btn-warning"%></td>
@@ -30,6 +30,6 @@
 <%= link_to 'Back', members_path, class: "btn" %>
 
 <%= link_to 'view payments', member_payments_path(@member), class: "btn  btn-primary"%>
-<%if @member.Designation == "Judge"%>
+<%if @member.designation == "Judge"%>
 <%= link_to "Make a payment", new_member_payment_path(@member), class: "btn btn-primary"%>
 <%end%>

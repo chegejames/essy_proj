@@ -14,12 +14,12 @@
 ActiveRecord::Schema.define(:version => 20130424001102) do
 
   create_table "members", :force => true do |t|
-    t.string   "First_Name"
-    t.string   "Last_Name"
-    t.string   "Designation"
-    t.string   "Email_Address"
-    t.string   "Cell_Number"
-    t.string   "Region"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "designation"
+    t.string   "email_address"
+    t.string   "cell_number"
+    t.string   "region"
     t.boolean  "active"
     t.integer  "balance"
     t.datetime "created_at",    :null => false
@@ -27,9 +27,9 @@ ActiveRecord::Schema.define(:version => 20130424001102) do
   end
 
   create_table "payment_plans", :force => true do |t|
-    t.integer  "Judge"
-    t.integer  "Magistrate"
-    t.integer  "Kadhi"
+    t.integer  "judge"
+    t.integer  "magistrate"
+    t.integer  "kadhi"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

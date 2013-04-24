@@ -13,9 +13,9 @@
 
 <% @payment_plans.each do |payment_plan| %>
   <tr>
-    <td><%= payment_plan.Judge %></td>
-    <td><%= payment_plan.Magistrate %></td>
-    <td><%= payment_plan.Kadhi %></td>
+    <td><%= payment_plan.judge %></td>
+    <td><%= payment_plan.magistrate %></td>
+    <td><%= payment_plan.kadhi %></td>
     <td><%= payment_plan.created_at.to_date%></td>
     <td><%= link_to 'Show', payment_plan, class: "btn btn-mini btn-info"%></td>
     <td><%= link_to 'Edit', edit_payment_plan_path(payment_plan), class: "btn btn-mini btn-warning" %></td>
@@ -26,4 +26,4 @@
 
 <br />
 
-<%= link_to 'New Payment plan', new_payment_plan_path %>
+

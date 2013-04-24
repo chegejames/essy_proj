@@ -1,12 +1,12 @@
 class CreateMembers < ActiveRecord::Migration
   def change
     create_table :members do |t|
-      t.string :First_Name
-      t.string :Last_Name
-      t.string :Designation
-      t.string :Email_Address
-      t.string :Cell_Number
-      t.string :Region
+      t.string :first_name
+      t.string :last_name
+      t.string :designation
+      t.string :email_address
+      t.string :cell_number
+      t.string :region
       t.boolean :active
       t.integer :balance
 

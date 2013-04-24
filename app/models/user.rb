@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   attr_accessible :hashed_password, :name, :salt, :password, :password_confirmation
   attr_accessor :password_confirmation
   attr_reader :password
+  validates :name, presence: true, uniqueness: true
+  validates :password, presence: true
+  validates_confirmation_of :password
 
   def User.authenticate(name, password)
     if user = find_by_name(name)

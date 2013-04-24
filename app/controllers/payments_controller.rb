@@ -8,6 +8,9 @@ class PaymentsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @payments }
+      format.pdf do
+        render :pdf => "#{@member.first_name}_#{@member.last_name}"
+      end
     end
   end
 
@@ -21,6 +24,9 @@ class PaymentsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @payment }
+      format.pdf do
+        render :pdf => "#{@member.first_name}_#{@member.last_name}"
+      end
     end
   end
 

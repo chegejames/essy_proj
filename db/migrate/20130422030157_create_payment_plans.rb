@@ -1,9 +1,9 @@
 class CreatePaymentPlans < ActiveRecord::Migration
   def change
     create_table :payment_plans do |t|
-      t.integer :Judge
-      t.integer :Magistrate
-      t.integer :Kadhi
+      t.integer :judge
+      t.integer :magistrate
+      t.integer :kadhi
 
       t.timestamps
     end

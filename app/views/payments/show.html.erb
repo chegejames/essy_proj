@@ -26,7 +26,7 @@
       <td><%= @payment.bank_name %></td>
       <td><%= @payment.amount %></td>
       <td><%= @payment.balance %></td>
-      <td><li class="btn btn-mini btn-warning"><%= link_to 'Edit',edit_member_payment_path(@member, @payment)%></li></td>
+      <td><%= link_to 'Edit',edit_member_payment_path(@member, @payment), class:"btn btn-mini btn-warning"%></td>
 
     </tr>
 

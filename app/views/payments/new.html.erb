@@ -1,9 +1,13 @@
 <div class="row">
   <div class="span10 offset3">
 <h1>New payment</h1>
-
-<%= render 'form' %>
-
+<%if @member.ever_active?%>
+  <%= render 'form' %>
+<%else%>
+  <span class="label label-warning"><%= "#{@member.first_name} #{@member.last_name} has never been active"%></span>
+  <%= link_to 'Edit to activate', edit_member_path(@member), class: "btn btn-primary"%>
+<br/>
+<%end%>
 <li class="btn btn-small"><%= link_to 'Back', member_payments_path(@member) %></li>
   </div>
 </div>

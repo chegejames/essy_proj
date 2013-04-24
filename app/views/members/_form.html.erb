@@ -12,33 +12,33 @@
   <% end %>
 
 
-    <%= f.label :First_Name %><br />
-    <%= f.text_field :First_Name %>
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, required: true, autofocus: true %>
 
 
-    <%= f.label :Last_Name %><br />
-    <%= f.text_field :Last_Name %>
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, required: true %>
 
 
-    <%= f.label :Designation %><br />
-    <%= f.select :Designation, Member::Designations %>
+    <%= f.label :designation %><br />
+    <%= f.select :designation, Member::Designations %>
 
 
-    <%= f.label :Email_Address %><br />
-    <%= f.text_field :Email_Address %>
+    <%= f.label :email_address %><br />
+    <%= f.email_field :email_address, required: true %>
 
 
-    <%= f.label :Cell_Number %><br />
-    <%= f.text_field :Cell_Number %>
+    <%= f.label :cell_number %><br />
+    <%= f.text_field :cell_number %>
 
 
-    <%= f.label :Region %><br />
-    <%= f.select :Region, Member::Regions %>
+    <%= f.label :region %><br />
+    <%= f.select :region, Member::Regions %>
 
 
     <%= f.label :active %>
-    <%= f.check_box :active, {checked: true} %> </br>
-
+    <%= f.check_box :active, {checked: true} %><br/ >
+    <br />
 
     <%= f.submit "Add member", class: "btn btn-primary btn-large" %>
 

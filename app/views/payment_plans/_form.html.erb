@@ -12,16 +12,16 @@
   <% end %>
 
 
-    <%= f.label :Judge %><br />
-    <%= f.number_field :Judge %>
+    <%= f.label :judge %><br />
+    <%= f.number_field :judge,  required: true, autofocus: true%>
 
 
-    <%= f.label :Magistrate %><br />
-    <%= f.number_field :Magistrate %>
+    <%= f.label :magistrate %><br />
+    <%= f.number_field :magistrate, required: true%>
 
 
-    <%= f.label :Kadhi %><br />
-    <%= f.number_field :Kadhi %><br/ >
+    <%= f.label :kadhi %><br />
+    <%= f.number_field :kadhi, required: true %><br/ >
 
 
     <%= f.submit class: "btn btn-large btn-primary" %>

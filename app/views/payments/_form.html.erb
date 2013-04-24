@@ -13,7 +13,7 @@
 
 
     <%= f.label :mode_of_payment %><br />
-    <%= f.select :mode_of_payment, Payment::Payment_modes %>
+    <%= f.select :mode_of_payment, Payment::Payment_modes, autofocus: true%>
 
     <%= f.label :cheque_no_if_cheque %><br />
     <%= f.text_field :cheque_no %>
@@ -24,7 +24,7 @@
 
 
     <%= f.label :amount %><br />
-    <%= f.number_field :amount %>
+    <%= f.number_field :amount, required: true%>
 
 
     <%= f.label :date%></br>
