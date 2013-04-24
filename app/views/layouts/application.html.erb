@@ -57,7 +57,7 @@
 </header>
 <section id="main">
 <%if session[:user_id]%>
-<%= form_tag search_path, :method => 'get', :class => "form-search pull-right" do %>
+<%= form_tag name_search_path, :method => 'get', :class => "form-search pull-right" do %>
   <%= text_field_tag :first, params[:first], placeholder: "First Name"%>
   <%= text_field_tag :last, params[:last], placeholder: "Last Name"%>
   <%= submit_tag "Search", :name => nil, class: "btn"%>
