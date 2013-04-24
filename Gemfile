@@ -38,12 +38,12 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 group :test do
-  gem 'cucumber-rails'
-  gem 'factory_girl_rails'
+ # gem 'cucumber-rails'
+ # gem 'factory_girl_rails'
   gem 'database_cleaner'
-  gem 'simplecov'
-  gem 'rspec-rails'
-  gem 'capybara'
+ # gem 'simplecov'
+ # gem 'rspec-rails'
+ # gem 'capybara'
 end
 
 gem 'will_paginate'
