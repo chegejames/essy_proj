@@ -18,7 +18,7 @@ EssyProj::Application.routes.draw do
 
   match 'invoice' => 'members#invoice'
 
-  match 'name_search' => 'members#search'
+  match 'search' => 'members#search'
 
   match 'create_invoice/:group' => 'members#create_invoice', :as => "create_invoice"
 
