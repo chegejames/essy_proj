@@ -1,0 +1,2 @@
+
+<%= render :partial => 'payments/payments.html.erb' %>
