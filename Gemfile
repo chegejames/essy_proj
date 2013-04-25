@@ -55,3 +55,5 @@ gem 'wicked_pdf'
 gem "nifty-generators"
 
 gem "ransack"
+
+gem "wkhtmltopdf-heroku"
