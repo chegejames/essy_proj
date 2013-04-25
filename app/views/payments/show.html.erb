@@ -32,7 +32,9 @@
       <td><%= @payment.bank_name %></td>
       <td><%= @payment.amount %></td>
       <td><%= @payment.balance %></td>
-      <td><%= link_to 'Edit',edit_member_payment_path(@member, @payment), class:"btn btn-mini btn-warning"%></td>
+      <% unless @payment.invoice.present?%>
+        <td><%= link_to 'Edit',edit_member_payment_path(@member, @payment), class:"btn btn-mini btn-warning"%></td>
+      <%end%>
 
     </tr>
 
