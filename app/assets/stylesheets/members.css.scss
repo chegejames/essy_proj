@@ -9,7 +9,11 @@
 }
 
 #pdf_header{
-  margin-top: 50px !important;
+  img{
+    float: left;
+    width: 25%;
+  }
+  margin-top: 100px !important;
   margin-bottom: 50px !important;
 }
 
