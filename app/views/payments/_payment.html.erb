@@ -1,0 +1,32 @@
+<table>
+  <tr>
+    <td>Date</td>
+    <td><%= @payment.date.to_date%></td>
+  </tr>
+  <tr>
+    <td>Recieved from</td>
+    <td><%= "#{@member.first_name} #{@member.last_name} payments"%></td>
+  </tr>
+  <tr>
+    <td>Amount of Kshs</td>
+    <td><%= @payment.amount%></td>
+  <tr>
+    <td>Balance</td>
+    <td><%= @payment.balance%></td>
+  </tr>
+  <tr>
+    <td>Mode of payment</td>
+    <td><%= @payment.mode_of_payment%></td>
+    <%if @payment.mode_of_payment == "cheque"%>
+      <tr>
+          <td>Cheque No.</td>
+          <td><%= @payment.cheque_no%></td>
+      </tr>
+      <tr>
+          <td>Bank name</td>
+          <td<%= @payment.bank_name%></td>
+      </tr>
+    <%end%>
+  <tr>
+
+</table>

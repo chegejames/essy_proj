@@ -24,7 +24,7 @@
     <td><%= member.active %></td>
     <td><%= link_to 'Show', member, class: "btn btn-mini btn-info" %></td>
     <td><%= link_to 'Edit', edit_member_path(member), class: "btn btn-mini btn-warning"%></td>
-    <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini btn-danger" %></td>
+    <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure? NOTE: ALL THEIR PAYMENTS WILL BE DESTROYED' }, class: "btn btn-mini btn-danger" %></td>
   </tr>
 <% end %>
 </table>
