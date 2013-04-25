@@ -64,9 +64,11 @@ class Member < ActiveRecord::Base
     elsif designation == "Magistrate" && active == true
       amount_to_pay = @payment_plan.magistrate
       member.payments.create(:date => Time.now.beginning_of_month.to_date, :invoice => amount_to_pay, :balance => 0, :amount => amount_to_pay)
+      memeber.update_attributes(:balance => 0)
     elsif designation == "Kadhi" && active == true
       amount_to_pay = @payment_plan.kadhi
       member.payments.create(:date => Time.now.beginning_of_month.to_date, :invoice => amount_to_pay, :balance => 0, :amount => amount_to_pay)
+      member.update_attributes(:balance => 0)
     end
   end
 
