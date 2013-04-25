@@ -11,6 +11,7 @@ class PaymentsController < ApplicationController
       format.pdf do
         render :pdf => "#{@member.first_name}_#{@member.last_name}"
                :header => {:html => { :template => 'payments/header.pdf.erb'}
+        end
       end
     end
   end
@@ -28,6 +29,7 @@ class PaymentsController < ApplicationController
       format.pdf do
         render :pdf => "#{@member.first_name}_#{@member.last_name}"
                :header => {:html => { :template => 'payments/header.pdf.erb'}
+        end
       end
     end
   end
