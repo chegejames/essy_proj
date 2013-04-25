@@ -75,9 +75,10 @@ class PaymentsController < ApplicationController
   def update
     @member = Member.find(params[:member_id])
     @payment = Payment.find(params[:id])
-    @payment.update_balance
+
     respond_to do |format|
       if @payment.update_attributes(params[:payment])
+         @payment.update_balance
         format.html { redirect_to [@member, @payment], notice: 'Payment was successfully updated.' }
         format.json { head :no_content }
       else
