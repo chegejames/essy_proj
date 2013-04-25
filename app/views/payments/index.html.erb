@@ -6,7 +6,7 @@
   <section class="row-fluid">
   <h1 class="span11"><%= "#{@member.first_name}'s payments"%></h1>
   <%if @member.ever_active?%>
-  <%= link_to image_tag("pdf.jpeg", size: "20x20"), member_payments_path(@member, format: :pdf), class: "span1 pull-right"%>
+  <%= link_to image_tag("pdf.jpeg", size: "40x20"), member_payments_path(@member, format: :pdf), class: "span1 pull-right"%>
   <%end%>
   </secion>
   <table class="table table-striped table-bordered table-hover table-condensed">
