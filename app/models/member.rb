@@ -13,7 +13,7 @@ class Member < ActiveRecord::Base
   scope :except_judges, where('designation = "Magistrate" OR designation = "Kadhi"')
   scope :with_balance, where('balance > 0')
 
-
+  #FIXME validates string to not to include number
   validates :first_name, :last_name, :region, :designation, presence: true
   validates :email_address, presence: true, uniqueness: true, format: {with: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/}
 
