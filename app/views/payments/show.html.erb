@@ -26,7 +26,7 @@
 
     <tr>
       <td><%= @payment.date%></td>
-      <td><%= number_to_curreny(@payment.invoice, :unit => "KES")%></td>
+      <td><%= number_to_currency(@payment.invoice, :unit => "KES")%></td>
       <td><%= @payment.mode_of_payment %></td>
       <td><%= @payment.cheque_no %></td>
       <td><%= @payment.bank_name %></td>
