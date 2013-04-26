@@ -25,12 +25,11 @@
   <% @payments.each do |payment| %>
     <tr>
       <td><%= payment.date%></td>
-      <td><%= payment.invoice%></td>
+      <td><%= number_to_currency(payment.invoice, :unit => "KES")%></td>
       <td><%= payment.mode_of_payment %></td>
       <td><%= payment.cheque_no %></td>
-      <td><%= payment.bank_name %></td>
-      <td><%= number_to_currency(payment.amount, :unit => "KES") %></td>
-      <td><%= payment.balance %></td>
+      <td><%= number_to_currency(payment.amount, :unit => "KES")%></td>
+      <td><%= number_to_currency(payment.balance, :unit => "KES")%></td>
       <td><%= link_to 'Show',[@member, payment], class: "btn btn-mini btn-info"%></td>
       <td><%= link_to 'Destroy', [@member, payment], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-mini"%></td>
     </tr>

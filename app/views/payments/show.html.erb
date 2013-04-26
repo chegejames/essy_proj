@@ -26,12 +26,12 @@
 
     <tr>
       <td><%= @payment.date%></td>
-      <td><%= @payment.invoice%></td>
+      <td><%= number_to_curreny(@payment.invoice, :unit => "KES")%></td>
       <td><%= @payment.mode_of_payment %></td>
       <td><%= @payment.cheque_no %></td>
       <td><%= @payment.bank_name %></td>
-      <td><%= @payment.amount %></td>
-      <td><%= @payment.balance %></td>
+      <td><%= number_to_currency(@payment.amount, :unit => "KES") %></td>
+      <td><%= number_to_currency(@payment.balance, :unit => "KES") %></td>
       <% unless @payment.invoice.present?%>
         <td><%= link_to 'Edit',edit_member_payment_path(@member, @payment), class:"btn btn-mini btn-warning"%></td>
       <%end%>
