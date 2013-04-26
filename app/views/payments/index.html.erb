@@ -28,6 +28,7 @@
       <td><%= number_to_currency(payment.invoice, :unit => "KES")%></td>
       <td><%= payment.mode_of_payment %></td>
       <td><%= payment.cheque_no %></td>
+      <td><% =payment.bank_name %></td>
       <td><%= number_to_currency(payment.amount, :unit => "KES")%></td>
       <td><%= number_to_currency(payment.balance, :unit => "KES")%></td>
       <td><%= link_to 'Show',[@member, payment], class: "btn btn-mini btn-info"%></td>
