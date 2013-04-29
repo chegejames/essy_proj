@@ -23,7 +23,7 @@ class PaymentsController < ApplicationController
       format.json { render json: @payments }
       format.pdf do
         render :pdf => "#{@member.first_name}_#{@member.last_name}",
-               :header => {:html => { :template => "payments/header.pdf.erb"}}
+
       end
     end
   end
