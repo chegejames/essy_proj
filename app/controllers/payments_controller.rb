@@ -12,7 +12,7 @@ class PaymentsController < ApplicationController
   # GET /payments.json
   def index
     @member = Member.find(params[:member_id])
-    @payments = @member.payments.paginate(:page => params[:page], :per_page => 20).order
+    @payments = @member.payments.paginate(:page => params[:page], :per_page => 20).reverse
     @last_12_payments = @payments.last(12)
     @invoice = @payments.sum(:invoice)
     @amount = @payments.sum(:amount)
