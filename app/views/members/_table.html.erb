@@ -23,8 +23,12 @@
     <td><%= member.region %></td>
     <td><%= member.active %></td>
     <td><%= link_to 'Show', member, class: "btn btn-mini btn-info" %></td>
-    <td><%= link_to 'Edit', edit_member_path(member), class: "btn btn-mini btn-warning"%></td>
+    <% if can? :update, Member%>
+      <td><%= link_to 'Edit', edit_member_path(member), class: "btn btn-mini btn-warning"%></td>
+    <%end%>
+    <% if can? :destroy, Member%>
     <td><%= link_to 'Delete', member, method: :delete, data: { dismiss: 'Are you sure? NOTE: ALL THEIR PAYMENTS WILL BE DESTROYED' }, class: "btn btn-mini btn-danger" %></td>
+   <%end%>
   </tr>
 <% end %>
 </table>

@@ -20,8 +20,9 @@
     <td><%= @member.cell_number %></td>
     <td><%= @member.region %></td>
     <td><%= @member.active %></td>
-
+    <%if can? :update, Member%>
     <td><%= link_to 'Edit', edit_member_path(@member), class: "btn btn-mini btn-warning"%></td>
+    <%end%>
   </tr>
 
 </table>
@@ -31,5 +32,7 @@
 
 <%= link_to 'view payments', member_payments_path(@member), class: "btn  btn-primary"%>
 <%if @member.designation == "Judge"%>
+<%if can? :create, Payment%>
 <%= link_to "Make a payment", new_member_payment_path(@member), class: "btn btn-primary"%>
+<%end%>
 <%end%>

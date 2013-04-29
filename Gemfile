@@ -61,3 +61,5 @@ gem "ransack"
 gem 'd3-rails'
 
 gem "devise"
+
+gem 'cancan'

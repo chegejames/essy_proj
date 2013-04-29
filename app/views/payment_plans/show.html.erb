@@ -12,7 +12,9 @@
     <td><%= @payment_plan.magistrate %></td>
     <td><%= @payment_plan.kadhi %></td>
     <td><%= @payment_plan.created_at.to_date%></td>
+    <% if can? :update, PaymentPlan%>
     <td><%= link_to 'Edit', edit_payment_plan_path(@payment_plan), class: "btn btn-warning btn-mini"%></td>
+    <%end%>
 
   </tr>
 </table>

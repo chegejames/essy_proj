@@ -34,7 +34,9 @@
       <td><%= number_to_currency(payment.amount, :unit => "KES", :format => "%n %u")%></td>
       <td><%= number_to_currency(payment.balance, :unit => "KES", :format => "%n %u")%></td>
       <td><%= link_to 'Show',[@member, payment], class: "btn btn-mini btn-info"%></td>
+      <%if can? :destroy, Member%>
       <td><%= link_to 'Delete', [@member, payment], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-mini"%></td>
+      <%end%>
     </tr>
   <% end %>
   </table>

@@ -10,17 +10,20 @@
 <header>
 <nav class="navbar navbar-fixed-top">
   <section class="navbar-inner">
+    <% if user_signed_in?%>
     <a class="brand">kenya Magistrates and Judges Association </a>
-
+    <%end%>
     <ul class="nav pull-right">
-
+      <% if user_signed_in?%>
       <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
         Payment Charges <b class="caret"></b>
       </a>
       <ul class="dropdown-menu">
           <li><%= link_to "View current payment charges", payment_plans_path%></li>
+          <% if can? :create, PaymentPlan %>
           <li><%= link_to "Add new payment charges", new_payment_plan_path%></li>
+          <%end%>
       </ul>
       </li>
       <li class="dropdown">
@@ -29,10 +32,14 @@
       </a>
       <ul class="dropdown-menu">
        <li> <%= link_to "View Members", members_path%></li>
+       <% if can? :create, Member%>
        <li><%= link_to "Add a new member", new_member_path%></li>
+       <%end%>
       </ul>
       </li>
+      <% if can? :invoice, Member%>
       <li><%= link_to "Invoice", invoice_path%></li>
+      <%end%>
       <li><%= link_to "Payments", payments_path%></li>
       <li><%= link_to "Late payments", judges_with_balances_path%></li>
       <li class="dropdown">
@@ -44,15 +51,27 @@
 
         </ul>
       </li>
-
+      <li class="dropdown">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+         <%= current_user.name%><b class="caret"></b>
+         </a>
+         <ul class="dropdown-menu">
+           <li><%= link_to "Change your password", edit_user_registration_path %></li>
+           <li><%= link_to "logout", destroy_user_session_path, method: :delete%></li>
+          </ul>
+      </li>
+      <%else%>
+      <li class="pull-right"><%= link_to "sign in", new_user_session_path%></li>
+      <%end%>
     </ul>
 
   </section>
 </nav>
 </header>
 <div class="container-fluid", id="main">
- <p class="notice"><%= notice %></p>
- <p class="alert"><%= alert %></p>
+
+ <span class="label label-success"><%= notice %></span>
+ <span class="label label-warning offset3"><%= alert %></span>
 <%= yield %>
 </div>
 
