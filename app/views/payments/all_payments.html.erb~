@@ -1,0 +1,35 @@
+<%= render 'search'%>
+<h1>All payments</h1>
+<section>
+  <table class="table table-striped table-bordered table-hover table-condensed">
+    <tr>
+     <th>Date</th>
+     <th>First Name</th>
+     <th>Last Name</th>
+     <th>Designation</th>
+     <th>Region</th>
+     <th>Invoice</th>
+     <th>Amount</th>
+     <th>Balance</th>
+     <th></th>
+     <th></th>
+    </tr>
+
+  <% @payments.each do |payment| %>
+    <tr>
+      <td><%= payment.date%></td>
+      <td><%= payment.member.first_name%></td>
+      <td><%= payment.member.last_name%></td>
+      <td><%= payment.member.designation%></td>
+      <td><%= payment.region%></td>
+      <td><%= payment.invoice%></td>
+      <td><%= payment.amount %></td>
+      <td><%= payment.balance %></td>
+      <td><%= link_to 'Show',[payment.member, payment], class:"btn btn-mini btn-info"%></td>
+      <td><%= link_to 'delete', [payment.member, payment], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-mini"%></td>
+    </tr>
+  <% end %>
+  </table>
+
+  <br />
+<%= will_paginate @payments%>

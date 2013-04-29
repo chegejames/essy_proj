@@ -1,3 +1,13 @@
+class Date
+  def this_year?
+    self.year == Time.now.year
+  end
+
+  def this_month?
+    self.month == Time.now.month
+  end
+end
+
 require File.expand_path('../boot', __FILE__)
 
 # Pick the frameworks you want:
@@ -64,5 +74,7 @@ module EssyProj
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    config.assets.initialize_on_precompile = false
   end
+
 end

@@ -1,8 +1,10 @@
 <%= search_form_for @search, html: {class: "form-search"} do |f|%>
   <%= f.text_field :first_name_cont, placeholder: "Fisrt Name"%>
   <%= f.text_field :last_name_cont, placeholder: "Last Name"%>
-  <%= f.select :designation_eq, Member::Designations, include_blank: "- -Designation - -"%>
-  <%= f.select :region_eq, Member::Regions, include_blank: "- - Region - -"%>
-  <%= f.select :active_eq, ['true', 'false'], include_blank: "- -Active? - -"%>
-  <%= f.submit "Search", class: "btn"%>
+  <%= f.select :designation_eq, Member::Designations, include_blank: "#{'-'*10}Designation#{'-'*14}"%>
+  <%= f.select :region_eq, Member::Regions, include_blank: "#{'-'*14}Region#{'-'*14}"%>
+
+  <%= f.select :active_eq, ['true', 'false'], include_blank: "#{'-'*14}Active#{'-'*14}"%>
+  <%= f.submit "Search", class: "btn btn-primary"%>
+  <%= link_to "clear", members_path, class: "btn btn-warning"%>
 <%end%>

@@ -1,23 +1,27 @@
 class MembersController < ApplicationController
-
+ def judges_with_balances
+    @search = Member.paginate(:page => params[:page], :per_page => 20).judges.with_balance.search(params[:q])
+    @members = @search.result
+ end
  def invoice
 
  end
 
  def create_invoice
    group = params[:group]
+   count = 0
    case group
       when "judges"
-        Member.invoice_judges
+        count = Member.invoice_judges
       when "magistrates"
-        Member.invoice_magistrates
+       count = Member.invoice_magistrates
       when "kadhis"
-        Member.invoice_kadhis
+        count = Member.invoice_kadhis
     end
     rescue Exception
       redirect_to invoice_path, notice: 'Invoice failed.'
     else
-     redirect_to invoice_path, notice: "#{group} were successfully invoiced"
+   redirect_to invoice_path, notice: "#{count} #{group} successfully invoiced"
   end
 
   # GET /members
@@ -25,7 +29,7 @@ class MembersController < ApplicationController
   def index
     @search = Member.paginate(:page => params[:page], :per_page => 20).search(params[:q])
     @members = @search.result
-    @search.build_sort if @search.sorts.empty?
+    #@search.build_sort if @search.sorts.empty?
 
     respond_to do |format|
       format.html # index.html.erb

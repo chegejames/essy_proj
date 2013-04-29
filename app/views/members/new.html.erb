@@ -1,9 +1,17 @@
-<dic class="row">
+<%if PaymentPlan.any?%>
+<div class="row">
   <div class="span10 offset3">
 <h1>New member</h1>
 
 <%= render 'form' %>
 
 <li class="btn btn-small"><%= link_to 'Back', members_path %>
+
+<%else%>
+<span class="label label-warning">First create a payment plan</span><br />
+<br />
+<%= link_to "Create payment plan", new_payment_plan_path, class: "btn btn-primary"%>
+
   </div>
 </div>
+<%end%>

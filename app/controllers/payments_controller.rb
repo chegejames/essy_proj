@@ -1,9 +1,21 @@
 class PaymentsController < ApplicationController
+  def all_payments
+    @search = Payment.search(params[:q])
+    @payments = @search.result.paginate(:page => params[:page], :per_page => 20)
+    @amount = @payments.sum(:amount)
+    @invoice = @payments.sum(:invoice)
+    @five_percent = @amount * 0.005
+
+  end
   # GET /payments
   # GET /payments.json
   def index
     @member = Member.find(params[:member_id])
-    @payments = @member.payments
+    @payments = @member.payments.paginate(:page => params[:page], :per_page => 20).order
+    @last_12_payments = @payments.last(12)
+    @invoice = @payments.sum(:invoice)
+    @amount = @payments.sum(:amount)
+    @balance = @invoice - @amount
 
     respond_to do |format|
       format.html # index.html.erb
@@ -56,8 +68,8 @@ class PaymentsController < ApplicationController
   def create
     @member = Member.find(params[:member_id])
     @payment = @member.payments.build(params[:payment])
+    @payment.region = @member.region
     @payment.get_balance
-
 
     respond_to do |format|
       if @payment.save
@@ -81,7 +93,7 @@ class PaymentsController < ApplicationController
 
     respond_to do |format|
       if @payment.update_attributes(params[:payment])
-         @payment.update_balance
+        @payment.update_balance
         @payment.update_member_balance
         format.html { redirect_to [@member, @payment], notice: 'Payment was successfully updated.' }
         format.json { head :no_content }
@@ -95,11 +107,12 @@ class PaymentsController < ApplicationController
   # DELETE /payments/1
   # DELETE /payments/1.json
   def destroy
+    @member = Member.find(params[:member_id])
     @payment = Payment.find(params[:id])
     @payment.destroy
 
     respond_to do |format|
-      format.html { redirect_to payments_url }
+      format.html { redirect_to member_payments_path(@member) }
       format.json { head :no_content }
     end
   end

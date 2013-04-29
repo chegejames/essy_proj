@@ -1,0 +1,11 @@
+<%= search_form_for @search, html: {class: "form-search"} do |f|%>
+
+  <%= f.text_field :member_first_name_cont, placeholder: "First Name"%>
+  <%= f.text_field :member_last_name_cont, placeholder: "Last Name"%>
+  <%= f.select :member_region_eq, Member::Regions, include_blank: "#{'-'*14}Region#{'-'*14}"%>
+      <%= f.select :member_designation_eq, Member::Designations, include_blank: "#{'-'*14}Designation#{'-'*14}"%>
+  <h5>from</h5><%= f.date_select :date_gteq%>
+  <h5>to</h5><%= f.date_select :date_lteq%>
+  <%= f.submit class: "btn btn-primary"%>
+  <%= link_to "reset", payments_path, class: "btn"%>
+<%end%>

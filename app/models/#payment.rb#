@@ -23,4 +23,6 @@ class Payment < ActiveRecord::Base
     balance = self.balance
     member.update_attributes(:balance => balance)
   end
+
+  def
 end

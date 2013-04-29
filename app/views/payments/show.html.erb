@@ -9,8 +9,6 @@
   <section class="row-fluid">
   <h1 class="span11"><%= "#{@member.first_name}'s payments"%></h1>
 
-  <%= link_to image_tag("pdf.jpeg", size: "40x20"), member_payment_path(@member, @payment, format: :pdf), class: "span1 pull-right"%>
-
   </secion>
 <table class="table table-striped table-bordered table-hover table-condensed">
     <tr>
@@ -26,12 +24,12 @@
 
     <tr>
       <td><%= @payment.date%></td>
-      <td><%= number_to_currency(@payment.invoice, :unit => "KES")%></td>
+      <td><%= number_to_currency(@payment.invoice, :unit => "KES", :format => "%n %u")%></td>
       <td><%= @payment.mode_of_payment %></td>
       <td><%= @payment.cheque_no %></td>
       <td><%= @payment.bank_name %></td>
-      <td><%= number_to_currency(@payment.amount, :unit => "KES") %></td>
-      <td><%= number_to_currency(@payment.balance, :unit => "KES") %></td>
+      <td><%= number_to_currency(@payment.amount, :unit => "KES", :format => "%n %u") %></td>
+      <td><%= number_to_currency(@payment.balance, :unit => "KES", :format => "%n %u") %></td>
       <% unless @payment.invoice.present?%>
         <td><%= link_to 'Edit',edit_member_payment_path(@member, @payment), class:"btn btn-mini btn-warning"%></td>
       <%end%>

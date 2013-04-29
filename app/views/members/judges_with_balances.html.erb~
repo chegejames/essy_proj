@@ -1,3 +1,24 @@
+<% if @members.any?%>
+  <div class="span 12">
+  <span class="label label-success"><%= @members.count%> judges found</span>
+<%else%>
+  <span class= "label label-error">no judges with balances</span>
+<%end%>
+<h2>Judges with balances</h2>
+<div class="row">
+<%= search_form_for @search, url: judges_with_balances_path, html: {class: "form-search"} do |f|%>
+  <%= f.text_field :first_name_cont, placeholder: "Fisrt Name"%>
+  <%= f.text_field :last_name_cont, placeholder: "Last Name"%>
+
+  <%= f.select :region_eq, Member::Regions, include_blank: "#{'-'*14}Region#{'-'*14}"%>
+
+  <%= f.select :active_eq, ['true', 'false'], include_blank: "#{'-'*14}Active#{'-'*14}"%>
+  <%= f.submit "Search", class: "btn btn-primary"%>
+  <%= link_to "clear", judges_with_balances_path, class: "btn btn-warning"%>
+<%end%>
+  </div>
+<div>
+
 
 <table class="table table-striped table-bordered table-condensed table-hover">
   <tr>
@@ -8,6 +29,7 @@
     <th>Cell number</th>
     <th><%= sort_link @search, :region, "Region"%></th>
     <th><%= sort_link @search, :active, "Active"%></th>
+    <th><%= sort_link @search, :balance, "Balance"%></th>
     <th></th>
     <th></th>
     <th></th>
@@ -22,9 +44,12 @@
     <td><%= member.cell_number %></td>
     <td><%= member.region %></td>
     <td><%= member.active %></td>
+    <td><%= member.balance %></td>
     <td><%= link_to 'Show', member, class: "btn btn-mini btn-info" %></td>
     <td><%= link_to 'Edit', edit_member_path(member), class: "btn btn-mini btn-warning"%></td>
     <td><%= link_to 'Delete', member, method: :delete, data: { dismiss: 'Are you sure? NOTE: ALL THEIR PAYMENTS WILL BE DESTROYED' }, class: "btn btn-mini btn-danger" %></td>
   </tr>
 <% end %>
 </table>
+
+<%= will_paginate @members%>

@@ -1,20 +1,18 @@
 EssyProj::Application.routes.draw do
 
+  #devise_for :users
+
   get "welcome/index"
 
 
-  match 'judges_with_late_payments' => 'admin#index'
-  match 'home' => 'admin#home'
 
-  match 'all_payments' => 'admin#all_payments'
+  match 'judges_with_balances' => "members#judges_with_balances"
+  match 'payments' => 'payments#all_payments'
   controller :sessions do
     get 'login' => :new
     post 'login' => :create
     delete 'logout' => :destroy
   end
-  resources :users
-
-
   resources :payment_plans
 
   match 'invoice' => 'members#invoice'

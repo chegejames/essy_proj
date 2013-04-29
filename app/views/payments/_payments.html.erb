@@ -1,8 +1,8 @@
 <%= wicked_pdf_stylesheet_link_tag "members"%>
-<h1><%= "#{@member.first_name} #{@member.last_name} payments"%></h1>
-  <h3><%= @payments.last.date%></h3>
+<h5><%= "#{@member.first_name} #{@member.last_name} payments"%></h5>
+  <h6><%= @payments.last.date%></h6>
 
-  <table class="pdf_table table table-striped table-condensed">
+  <table class="pdf_table table table-striped table-condensed table-bordered">
     <tr>
      <th>Date</th>
      <th>Invoice</th>
@@ -12,7 +12,7 @@
      <th>Amount</th>
      <th>Balance</th>
 
-  <% @payments.each do |payment| %>
+  <% @last_12_payments.each do |payment| %>
     <tr>
       <td><%= payment.date%></td>
       <td><%= payment.invoice%></td>

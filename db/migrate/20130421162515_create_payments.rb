@@ -2,6 +2,7 @@ class CreatePayments < ActiveRecord::Migration
   def change
     create_table :payments do |t|
       t.references :member
+      t.string :region
       t.integer :invoice
       t.string :mode_of_payment
       t.string :cheque_no

@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20130424001102) do
 
   create_table "payments", :force => true do |t|
     t.integer  "member_id"
+    t.string   "region"
     t.integer  "invoice"
     t.string   "mode_of_payment"
     t.string   "cheque_no"
