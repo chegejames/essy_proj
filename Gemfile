@@ -48,6 +48,7 @@ group :test do
 end
 
 gem 'will_paginate'
+
 gem 'bootstrap-sass'
 
 gem 'wicked_pdf'
