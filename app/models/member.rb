@@ -16,7 +16,7 @@ class Member < ActiveRecord::Base
   scope :with_balance, where('balance > 0')
 
   #FIXME validates string to not to include number
-  validates :first_name, :last_name, :region, :designation, presence: true
+  validates :first_name, :last_name, :region, :designation, presence: true, format: {with: /^[a-zA-Z\s]+$/}
   validates :email_address, presence: true, uniqueness: true, format: {with: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/}
 
   def months_to_end_of_year
