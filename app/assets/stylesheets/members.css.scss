@@ -9,11 +9,11 @@
 }
 
 #pdf_header{
-  img{
-    float: left;
-  }
   margin-top: 100px !important;
   margin-bottom: 50px !important;
+  p{
+    font-size: 11px;
+  }
 }
 
 .pdf_table{
