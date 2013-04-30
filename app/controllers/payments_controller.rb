@@ -13,7 +13,6 @@ class PaymentsController < ApplicationController
   def index
     @member = Member.find(params[:member_id])
     @payments = @member.payments.order("date asc").paginate(:page => params[:page], :per_page => 20)
-    @last_12_payments = @payments
     @invoice = @payments.sum(:invoice)
     @amount = @payments.sum(:amount)
     @balance = @invoice - @amount

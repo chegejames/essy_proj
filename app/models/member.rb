@@ -1,5 +1,5 @@
 class Member < ActiveRecord::Base
-  attr_accessible :cell_number, :designation, :email_address, :first_name, :last_name, :region, :date, :active, :balance
+  attr_accessible :designation, :first_name, :last_name, :region, :date, :active, :balance
   has_many :payments, :dependent => :destroy
   Designations = ['Judge', 'Magistrate', 'Kadhi']
   Regions = ['Nairobi', 'N. Rift ', 'S. Rift', 'L. Eastern', 'Eastern N', 'N. Eastern', 'N. Nyanza', 'S. Nyanza', 'Embu','Mt. Kenya', 'Kakamega /VHG','Bungoma /Busia', 'Coast']
@@ -17,7 +17,7 @@ class Member < ActiveRecord::Base
 
   #FIXME validates string to not to include number
   validates :first_name, :last_name, :region, :designation, presence: true, format: {with: /^[a-zA-Z\s]+$/}
-  validates :email_address, presence: true, uniqueness: true, format: {with: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/}
+
 
   def months_to_end_of_year
     Time.now.end_of_year.month - Time.now.prev_month.month

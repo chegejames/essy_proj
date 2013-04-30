@@ -35,6 +35,9 @@ class MembersController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @members }
+      format.pdf do
+        render :pdf => "All_members",
+      end
     end
   end
 
@@ -46,6 +49,9 @@ class MembersController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @member }
+      format.pdf do
+        render :pdf => "#{@member.first_name}_#{@member.last_name}",
+      end
     end
   end
 

@@ -17,13 +17,11 @@ ActiveRecord::Schema.define(:version => 20130429101644) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "designation"
-    t.string   "email_address"
-    t.string   "cell_number"
     t.string   "region"
     t.boolean  "active"
     t.integer  "balance"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "payment_plans", :force => true do |t|

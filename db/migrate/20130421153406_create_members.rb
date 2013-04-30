@@ -4,8 +4,6 @@ class CreateMembers < ActiveRecord::Migration
       t.string :first_name
       t.string :last_name
       t.string :designation
-      t.string :email_address
-      t.string :cell_number
       t.string :region
       t.boolean :active
       t.integer :balance

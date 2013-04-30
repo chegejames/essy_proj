@@ -41,8 +41,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.2)
-    d3-rails (0.0.5)
-      railties (>= 3.1)
     database_cleaner (0.9.1)
     devise (2.2.3)
       bcrypt-ruby (~> 3.0)
@@ -139,7 +137,6 @@ DEPENDENCIES
   bootstrap-sass
   cancan
   coffee-rails (~> 3.2.1)
-  d3-rails
   database_cleaner
   devise
   jquery-rails

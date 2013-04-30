@@ -59,7 +59,7 @@ gem "ransack"
 
 gem "wkhtmltopdf-heroku"
 
-gem 'd3-rails'
+#gem 'd3-rails'
 
 gem "devise"
 

@@ -1,0 +1,23 @@
+<%= render :partial => "payments/header.html.erb"%>
+<%= wicked_pdf_stylesheet_link_tag "members"%>
+<table class="table table-striped table-bordered table-condensed table-hover">
+  <tr>
+    <th>Membership ID</th>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Designation</th>
+    <th>Region</th>
+    <th>Active</th>
+  </tr>
+
+  <tr>
+    <td><%= @member.id%></td>
+    <td><%= @member.first_name %></td>
+    <td><%= @member.last_name %></td>
+    <td><%= @member.designation %></td>
+    <td><%= @member.region %></td>
+    <td><%= @member.active %></td>
+  </tr>
+
+</table>
+
