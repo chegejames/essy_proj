@@ -16,7 +16,7 @@ class Member < ActiveRecord::Base
   scope :with_balance, where('balance > 0')
 
 
-  validates :first_name, :last_name, :designation, presence: true, format: {with: /^[a-zA-Z.'\s]+$/}
+  validates :first_name, :last_name, :designation, presence: true, format: {with: /^[a-zA-Z.'-,\s]+$/}
 
 
   def months_to_end_of_year
