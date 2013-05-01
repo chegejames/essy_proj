@@ -1,8 +1,8 @@
 class MembersController < ApplicationController
  load_and_authorize_resource :except => [:judges_with_balances]
  def judges_with_balances
-    @search = Member.paginate(:page => params[:page], :per_page => 300).judges.with_balance.search(params[:q])
-    @members = @search.result
+    @search = Member.judges.with_balance.search(params[:q])
+    @members = @search.result.paginate(:page => params[:page], :per_page => 20)
  end
  def invoice
 
@@ -28,9 +28,9 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    @search = Member.paginate(:page => params[:page], :per_page => 300).search(params[:q])
-    @members = @search.result
-    #@search.build_sort if @search.sorts.empty?
+    @search = Member.search(params[:q])
+    @members = @search.result.paginate(:page => params[:page], :per_page => 20)
+
 
     respond_to do |format|
       format.html # index.html.erb
