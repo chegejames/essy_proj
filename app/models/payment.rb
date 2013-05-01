@@ -3,7 +3,7 @@ class Payment < ActiveRecord::Base
   attr_accessible :amount, :balance, :bank_name, :cheque_no, :mode_of_payment, :total_amount, :invoice, :date, :region
   validates :amount, presence: true, numericality: true, allow_blank: true
   validates :bank_name, :cheque_no, presence: true, :if => :paid_with_cheque?
-  validates :bank_name, :cheque_no, :length => {:is => 0}, if => :paid_with_cash?
+  validates :bank_name, :cheque_no, :length => {:is => 0}, :if => :paid_with_cash?
   Payment_modes = ['cash', 'cheque']
   #after_save :update_member_balance
 
