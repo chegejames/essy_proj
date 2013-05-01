@@ -3,8 +3,8 @@ class PaymentsController < ApplicationController
   def all_payments
     @search = Payment.search(params[:q])
     @payments = @search.result.paginate(:page => params[:page], :per_page => 20)
-    @amount = @payments.sum(:amount)
-    @invoice = @payments.sum(:invoice)
+    @amount = @search.result.sum(:amount)
+    @invoice = @search.result.sum(:invoice)
     @five_percent = @amount * 0.005
 
   end
