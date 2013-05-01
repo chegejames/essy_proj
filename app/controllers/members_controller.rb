@@ -29,8 +29,9 @@ class MembersController < ApplicationController
   # GET /members.json
   def index
     @search = Member.search(params[:q])
-    @members = @search.result.paginate(:page => params[:page], :per_page => 20)
-
+    @members = @search.result
+    @members_pdf= @members
+    @members.paginate(:page => params[:page], :per_page => 20)
 
     respond_to do |format|
       format.html # index.html.erb
