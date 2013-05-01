@@ -5,6 +5,7 @@
 <%end%>
 <h2>Judges with balances</h2>
 <%= search_form_for @search, url: judges_with_balances_path, html: {class: "form-search"} do |f|%>
+  <%= f.number_field :id_eq, placeholder: "Membership ID""%>
   <%= f.text_field :first_name_cont, placeholder: "Fisrt Name"%>
   <%= f.text_field :last_name_cont, placeholder: "Last Name"%>
   <%= f.number_field :balance_gteq, placeholder: "balance from"%>
@@ -19,11 +20,10 @@
 
 <table class="table table-striped table-bordered table-condensed table-hover">
   <tr>
+    <th><%= sort_link @search, :id, "Membership ID"%></th>
     <th><%= sort_link @search, :first_name,"First Name"%></th>
     <th><%= sort_link @search, :last_name, "Last Name"%></th>
     <th><%= sort_link @search, :designation, "Designation"%></th>
-    <th>Email address</th>
-    <th>Cell number</th>
     <th><%= sort_link @search, :region, "Region"%></th>
     <th><%= sort_link @search, :active, "Active"%></th>
     <th><%= sort_link @search, :balance, "Balance"%></th>
@@ -34,11 +34,10 @@
 
 <% @members.each do |member| %>
   <tr>
+    <td><%= member.id%></td>
     <td><%= member.first_name %></td>
     <td><%= member.last_name %></td>
     <td><%= member.designation %></td>
-    <td><%= member.email_address %></td>
-    <td><%= member.cell_number %></td>
     <td><%= member.region %></td>
     <td><%= member.active %></td>
     <td><%= member.balance %></td>
