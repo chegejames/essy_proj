@@ -3,7 +3,7 @@ class Member < ActiveRecord::Base
   has_many :payments, :dependent => :destroy
   Designations = ['Judge', 'Magistrate', 'Kadhi']
   Regions = ['Nairobi', 'N. Rift ', 'S. Rift', 'L. Eastern', 'Eastern N', 'N. Eastern', 'N. Nyanza', 'S. Nyanza', 'Embu','Mt. Kenya', 'Kakamega /VHG','Bungoma /Busia', 'Coast']
-  default_scope order('id DESC')
+  default_scope order('id ASC')
   after_update :create_first_invoice, :if => :has_been_reactivated?
   after_update :create_first_invoice, :if => :designation_has_changed?
   before_update :create_first_invoice, :if => :has_been_activated?
