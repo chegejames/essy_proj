@@ -8,8 +8,8 @@
   <%= f.number_field :id_eq, placeholder: "Membership ID"%>
   <%= f.text_field :first_name_cont, placeholder: "Fisrt Name"%>
   <%= f.text_field :last_name_cont, placeholder: "Last Name"%>
-  <%= f.number_field :balance_gteq, placeholder: "balance from of"%>
-  <%= f.number_field :balance_lteq, placeholder: "balance to of"%>
+  <%= f.number_field :balance_gteq, placeholder: "with balance from"%>
+  <%= f.number_field :balance_lteq, placeholder: "with balance to"%>
   <h5>sort by</h5>
   <%= f.select :region_eq, Member::Regions, include_blank: "#{'-'*14}Region#{'-'*14}"%>
 

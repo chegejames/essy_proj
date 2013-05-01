@@ -28,7 +28,7 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    @search = Member.paginate(:page => params[:page], :per_page => 20).search(params[:q])
+    @search = Member.search(params[:q]).paginate(:page => params[:page], :per_page => 20)
     @members = @search.result
     #@search.build_sort if @search.sorts.empty?
 
