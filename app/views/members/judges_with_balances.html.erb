@@ -5,7 +5,7 @@
 <%end%>
 <h2>Judges with balances</h2>
 <%= search_form_for @search, url: judges_with_balances_path, html: {class: "form-search"} do |f|%>
-  <%= f.number_field :id_eq, placeholder: "Membership ID""%>
+  <%= f.number_field :id_eq, placeholder: "Membership ID"%>
   <%= f.text_field :first_name_cont, placeholder: "Fisrt Name"%>
   <%= f.text_field :last_name_cont, placeholder: "Last Name"%>
   <%= f.number_field :balance_gteq, placeholder: "balance from"%>
