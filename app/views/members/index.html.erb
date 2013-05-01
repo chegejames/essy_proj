@@ -4,7 +4,7 @@
 <span class="label label-success"><%= pluralize(@members.count, 'member') %> found</span>
 <%end%>
 <h3>All members</h3>
-
+<%= link_to image_tag("pdf.jpeg", size: "40x20", title: "all members"), members_path(format: :pdf), class: "span1 pull-right"%>
 <%= render 'search'%>
 
 

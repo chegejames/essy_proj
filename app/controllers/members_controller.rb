@@ -1,7 +1,7 @@
 class MembersController < ApplicationController
  load_and_authorize_resource :except => [:judges_with_balances]
  def judges_with_balances
-    @search = Member.paginate(:page => params[:page], :per_page => 20).judges.with_balance.search(params[:q])
+    @search = Member.paginate(:page => params[:page], :per_page => 300).judges.with_balance.search(params[:q])
     @members = @search.result
  end
  def invoice
