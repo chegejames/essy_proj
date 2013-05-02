@@ -5,7 +5,7 @@ class PaymentsController < ApplicationController
     @payments = @search.result.paginate(:page => params[:page], :per_page => 20)
     @amount = @search.result.sum(:amount)
     @invoice = @search.result.sum(:invoice)
-    @five_percent = @amount * 0.005
+    @five_percent = @amount * 0.05
 
   end
   # GET /payments
@@ -92,8 +92,8 @@ class PaymentsController < ApplicationController
 
     respond_to do |format|
       if @payment.update_attributes(params[:payment])
-       # @payment.update_balance
-       # @payment.update_member_balance
+        @payment.update_balance
+        @payment.update_member_balance
         format.html { redirect_to [@member, @payment], notice: 'Payment was successfully updated.' }
         format.json { head :no_content }
       else
