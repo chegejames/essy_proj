@@ -64,3 +64,5 @@ gem "wkhtmltopdf-heroku"
 gem "devise"
 
 gem 'cancan'
+
+gem "acts_as_paranoid", "~>0.4.0"
