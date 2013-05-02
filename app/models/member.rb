@@ -1,5 +1,4 @@
 class Member < ActiveRecord::Base
-  acts_as_paranoid
   attr_accessible :designation, :first_name, :last_name, :region, :date, :active, :balance
   has_many :payments, :dependent => :destroy
   Designations = ['Judge', 'Magistrate', 'Kadhi']
