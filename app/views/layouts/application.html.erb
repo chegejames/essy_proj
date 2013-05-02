@@ -47,7 +47,7 @@
         </a>
         <ul class="dropdown-menu">
           <li><%= link_to "view Payments", payments_path%></li>
-          <% if can :create, Payment%>
+          <% if can? :create, Payment%>
             <li><%= link_to "view deleted payments"%></li>
           <%end%>
         </ul>
