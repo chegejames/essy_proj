@@ -32,7 +32,7 @@ class MembersController < ApplicationController
   def index
     @search = Member.search(params[:q])
     @members_pdf= @search.result.order("id ASC")
-    @members = @search.result.paginate(:page => params[:page], :per_page => 200).order("id ASC")
+    @members = @search.result.paginate(:page => params[:page], :per_page => 20).order("id ASC")
 
 
 
