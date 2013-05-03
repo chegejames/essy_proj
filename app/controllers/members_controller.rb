@@ -1,28 +1,30 @@
 class MembersController < ApplicationController
  load_and_authorize_resource :except => [:judges_with_balances]
- def judges_with_balances
+  def deleted_members
+  end
+  def judges_with_balances
     @search = Member.judges.with_balance.search(params[:q])
     @members = @search.result.paginate(:page => params[:page], :per_page => 20).order("id ASC")
- end
- def invoice
+  end
+  def invoice
 
- end
+  end
 
- def create_invoice
-   group = params[:group]
-   count = 0
-   case group
-      when "judges"
-        count = Member.invoice_judges
-      when "magistrates"
-       count = Member.invoice_magistrates
-      when "kadhis"
-        count = Member.invoice_kadhis
+  def create_invoice
+    group = params[:group]
+    count = 0
+    case group
+    when "judges"
+      count = Member.invoice_judges
+    when "magistrates"
+      count = Member.invoice_magistrates
+    when "kadhis"
+      count = Member.invoice_kadhis
     end
-    rescue Exception
-      redirect_to invoice_path, notice: 'Invoice failed.'
-    else
-   redirect_to invoice_path, notice: "#{count} #{group} successfully invoiced"
+  rescue Exception
+    redirect_to invoice_path, notice: 'Invoice failed.'
+  else
+    redirect_to invoice_path, notice: "#{count} #{group} successfully invoiced"
   end
 
   # GET /members

@@ -8,7 +8,13 @@ EssyProj::Application.routes.draw do
 
 
   match 'judges_with_balances' => "members#judges_with_balances"
+
+  match 'deleted_members' => "members#deleted_members"
+
+  match 'deleted_payments' => "payments#deleted_payments"
+
   match 'payments' => 'payments#all_payments'
+
   controller :sessions do
     get 'login' => :new
     post 'login' => :create
