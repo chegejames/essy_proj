@@ -6,7 +6,7 @@
 <h3>All members</h3>
 
 <%= render 'search'%>
-<%= link_to image_tag("pdf.jpeg", size: "40x20", title: "all members"), members_path(format: :pdf), class: "span1 pull-right"%>
+<%= link_to image_tag("pdf.jpeg", size: "40x20", title: "all members"), members_path(format: :pdf, :q => @search), class: "span1 pull-right"%>
 
 
 
