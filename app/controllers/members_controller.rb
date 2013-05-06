@@ -40,7 +40,7 @@ class MembersController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @members }
       format.pdf do
-        render :pdf => "All_members",
+        render :pdf => "members",
       end
     end
   end
