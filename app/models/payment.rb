@@ -1,5 +1,7 @@
 class Payment < ActiveRecord::Base
   belongs_to :member
+
+  acts_as_paranoid
   attr_accessible :amount, :balance, :bank_name, :cheque_no, :mode_of_payment, :total_amount, :invoice, :date, :region
   validates :amount, presence: true, numericality: true, allow_blank: true
   validates :bank_name, :cheque_no, presence: true, :if => :paid_with_cheque?

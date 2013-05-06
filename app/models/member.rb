@@ -2,6 +2,8 @@ class Member < ActiveRecord::Base
   attr_accessible :designation, :first_name, :last_name, :region, :date, :active, :balance
   has_many :payments, :dependent => :destroy
 
+  acts_as_paranoid
+
   Designations = ['Judge', 'Magistrate', 'Kadhi']
   Regions = ['Nairobi', 'N. Rift ', 'S. Rift', 'L. Eastern', 'Eastern N', 'N. Eastern', 'N. Nyanza', 'S. Nyanza', 'Embu','Mt. Kenya', 'Kakamega /VHG','Bungoma /Busia', 'Coast']
 
