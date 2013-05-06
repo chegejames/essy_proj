@@ -2,16 +2,16 @@
   <table class="table table-striped table-bordered table-hover table-condensed">
 
    <tr>
-     <th>Receipt Number</th>
-     <th>Date</th>
-     <th>First Name</th>
-     <th>Last Name</th>
-     <th>Designation</th>
-     <th>Region</th>
-     <th>Invoice</th>
-     <th>Amount</th>
-     <th>Balance</th>
-     <th>Deleted at</th>
+     <th><%= sort_link @search, :receipt_number, "Receipt Number"%></th>
+     <th><%= sort_link @search, :date, "Date"</th>
+     <th><%= sort_link @search, :first_name, "First Name"</th>
+     <th><%= sort_link @search, :last_name, "Last Name"</th>
+     <th><%= sort_link @search, :desigantion, "Designation"</th>
+     <th><%= sort_link @search, :region, "Region"</th>
+     <th><%= sort_link @search, :invoice, "Invoice"</th>
+     <th><%= sort_link @search, :amount, "Amount"</th>
+     <th><%= sort_link @search, :balance, "Balance"</th>
+     <th><%= sort_link @search, :deleted, "Deleted at"</th>
     </tr>
 
   <% @payments.each do |payment| %>
