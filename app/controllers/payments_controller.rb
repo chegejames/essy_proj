@@ -1,7 +1,10 @@
 class PaymentsController < ApplicationController
   load_and_authorize_resource :except => [:all_payments, :index, :show]
   def deleted_payments
+    @search = Payment.only_deleted.search(params[:q])
+    @payments = @search.result.paginate(:page => params[:page], :per_page => 20)
   end
+
   def all_payments
     @search = Payment.search(params[:q])
     @payments = @search.result.paginate(:page => params[:page], :per_page => 20)
