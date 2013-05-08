@@ -4,9 +4,7 @@
    <tr>
      <th><%= sort_link @search, :receipt_number, "Receipt Number"%></th>
      <th><%= sort_link @search, :date, "Date"%></th>
-     <th><%= sort_link @search, :first_name, "First Name"%></th>
-     <th><%= sort_link @search, :last_name, "Last Name"%></th>
-     <th><%= sort_link @search, :desigantion, "Designation"%></th>
+     <th><%= sort_link @search, :member_id, "Member ID"%>,/th>
      <th><%= sort_link @search, :region, "Region"%></th>
      <th><%= sort_link @search, :invoice, "Invoice"%></th>
      <th><%= sort_link @search, :amount, "Amount"%></th>
@@ -18,9 +16,7 @@
     <tr>
       <td><%= payment.id%></td>
       <td><%= payment.date%></td>
-      <td><%= payment.member.first_name%></td>
-      <td><%= payment.member.last_name%></td>
-      <td><%= payment.member.designation%></td>
+      <td><%= payment.member_id%></td>
       <td><%= payment.region%></td>
       <td><%= payment.invoice%></td>
       <td><%= payment.amount %></td>
