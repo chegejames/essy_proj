@@ -4,7 +4,7 @@
    <tr>
      <th><%= sort_link @search, :receipt_number, "Receipt Number"%></th>
      <th><%= sort_link @search, :date, "Date"%></th>
-     <th><%= sort_link @search, :member_id, "Member ID"%>,/th>
+     <th><%= sort_link @search, :member_id, "Member ID"%></th>
      <th><%= sort_link @search, :region, "Region"%></th>
      <th><%= sort_link @search, :invoice, "Invoice"%></th>
      <th><%= sort_link @search, :amount, "Amount"%></th>
@@ -21,6 +21,7 @@
       <td><%= payment.invoice%></td>
       <td><%= payment.amount %></td>
       <td><%= payment.balance %></td>
+      <td<%= payment.deleted_at %></td>
     </tr>
   <% end %>
   </table>
