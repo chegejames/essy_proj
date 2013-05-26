@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #splash{
-  background-image: image-url("logo.gif");
-  height: 1000px;
+ padding: 0px;
+ image{
+   padding: 0px;
+ }
 }
