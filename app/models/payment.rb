@@ -22,11 +22,12 @@ class Payment < ActiveRecord::Base
     @balance = payment.member.payments.last.balance
     payment.balance = (@balance - payment.amount)
   end
-
+  #FIXME editing balance makes it negative or sth like that.
+  #FIXME when all payments are deleted balance should be set to zero
   def update_balance
     payment = self
-    @balance = payment.member.payments[-2].balance
-    @balance = (@balance - payment.amount)
+    @balance = payment.member.payments.sum(:invoice) - payment.member.paymetns.sum(:amount)
+   # @balance = (@balance - payment.amount)
     payment.update_attributes(:balance => @balance)
   end
 

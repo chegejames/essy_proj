@@ -11,8 +11,8 @@ class PaymentsController < ApplicationController
     @amount = @search.result.sum(:amount)
     @invoice = @search.result.sum(:invoice)
     @five_percent = @amount * 0.05
-
   end
+
   # GET /payments
   # GET /payments.json
   def index
