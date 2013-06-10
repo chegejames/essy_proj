@@ -116,6 +116,7 @@ class PaymentsController < ApplicationController
     @payment.destroy
 
     respond_to do |format|
+      @member.update_member_balance_when_payment_has_been_deleted
       format.html { redirect_to member_payments_path(@member) }
       format.json { head :no_content }
     end

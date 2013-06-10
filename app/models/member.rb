@@ -48,6 +48,10 @@ class Member < ActiveRecord::Base
     end
   end
 
+  def update_member_balance_when_payment_has_been_deleted
+    balance = self.payments.sum(:invoice) - self.payments.sum(:amount)
+    self.update_attributes(:balance => balance)
+  end
 
   def self.invoice_magistrates
     count = 0
