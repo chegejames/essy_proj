@@ -26,7 +26,7 @@ class Payment < ActiveRecord::Base
   #FIXME when all payments are deleted balance should be set to zero
   def update_balance
     payment = self
-    @balance = payment.member.payments.sum(:invoice) - payment.member.paymetns.sum(:amount)
+    @balance = payment.member.payments.sum(:invoice) - payment.member.payments.sum(:amount)
    # @balance = (@balance - payment.amount)
     payment.update_attributes(:balance => @balance)
   end
