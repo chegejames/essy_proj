@@ -1,0 +1,327 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="robots" content="index, follow" />
+  <meta name="keywords" content="joomla, Joomla" />
+  <meta name="description" content="Joomla! - the dynamic portal engine and content management system" />
+  <meta name="generator" content="Joomla! 1.5 - Open Source Content Management" />
+  <title>The Kenya Magistrates and Judges Associaton</title>
+  <link href="/index.php?format=feed&amp;type=rss" rel="alternate" type="application/rss+xml" title="RSS 2.0" />
+  <link href="/index.php?format=feed&amp;type=atom" rel="alternate" type="application/atom+xml" title="Atom 1.0" />
+  <link href="/templates/ja_helio/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+  <link rel="stylesheet" href="http://www.kmja.or.ke/modules/mod_jaslideshow/ja_slideshow/ja.slideshow.css" type="text/css" />
+  <script type="text/javascript" src="/media/system/js/mootools.js"></script>
+  <script type="text/javascript" src="/media/system/js/caption.js"></script>
+
+
+<link rel="stylesheet" href="http://www.kmja.or.ke/templates/system/css/system.css" type="text/css" />
+<link rel="stylesheet" href="http://www.kmja.or.ke/templates/system/css/general.css" type="text/css" />
+<link rel="stylesheet" href="http://www.kmja.or.ke/templates/ja_helio/css/template.css" type="text/css" />
+<link rel="stylesheet" href="http://www.kmja.or.ke/templates/ja_helio/css/typo.css" type="text/css" />
+<script language="javascript" type="text/javascript" src="http://www.kmja.or.ke/templates/ja_helio/js/ja.script.js"></script>
+
+<!-- Menu head -->
+			<link href="http://www.kmja.or.ke/templates/ja_helio/ja_menus/ja_cssmenu/ja.cssmenu.css" rel="stylesheet" type="text/css" />
+			<script src="http://www.kmja.or.ke/templates/ja_helio/ja_menus/ja_cssmenu/ja.cssmenu.js" language="javascript" type="text/javascript"></script>
+			
+<link href="http://www.kmja.or.ke/templates/ja_helio/css/colors/green.css" rel="stylesheet" type="text/css" />
+
+<!--[if lte IE 6]>
+<style type="text/css">
+.clearfix {height: 1%;}
+img {border: none;}
+</style>
+<![endif]-->
+
+<!--[if gte IE 7.0]>
+<style type="text/css">
+.clearfix {display: inline-block;}
+</style>
+<![endif]-->
+
+
+
+<!--[if gt IE 7]>
+<link href="http://www.kmja.or.ke/templates/ja_helio/css/ie8.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+</head>
+
+<body id="bd" class="wide fs3" >
+<a name="Top" id="Top"></a>
+<ul class="accessibility">
+	<li><a href="/index.php#ja-content" title="Skip to content">Skip to content</a></li>
+	<li><a href="/index.php#ja-mainnav" title="Skip to main navigation">Skip to main navigation</a></li>
+	<li><a href="/index.php#ja-col1" title="Skip to 1st column">Skip to 1st column</a></li>
+	<li><a href="/index.php#ja-col2" title="Skip to 2nd column">Skip to 2nd column</a></li>
+</ul>
+
+<div id="ja-wrapper">
+
+<!-- BEGIN: MAIN NAVIGATION -->
+<div id="ja-mainnavwrap">
+	<div id="ja-mainnav">
+		<ul id="ja-cssmenu" class="clearfix">
+<li class="active"><a href="http://www.kmja.or.ke/" class="menu-item0 active first-item" id="menu1" title="Home"><span class="menu-title">Home</span></a></li> 
+<li ><a href="/index.php?option=com_content&amp;view=article&amp;id=52&amp;Itemid=53" class="menu-item1" id="menu53" title="About Us"><span class="menu-title">About Us</span></a></li> 
+<li class="havechild"><a href="/index.php?option=com_content&amp;view=article&amp;id=53&amp;Itemid=54" class="menu-item2" id="menu54" title="The Structure"><span class="menu-title">The Structure</span></a><ul><li ><a href="/index.php?option=com_content&amp;view=article&amp;id=54&amp;Itemid=55" class=" first-item" id="menu55" title="The Metamorphosis of KMJA"><span class="menu-title">The Metamorphosis of KMJA</span></a></li> 
+<li ><a href="/index.php?option=com_content&amp;view=article&amp;id=55&amp;Itemid=56"  id="menu56" title="The Present Scenario"><span class="menu-title">The Present Scenario</span></a></li> 
+<li ><a href="/index.php?option=com_content&amp;view=article&amp;id=56&amp;Itemid=57" class=" last-item" id="menu57" title="The Strategic Planning Process"><span class="menu-title">The Strategic Planning Process</span></a></li> 
+</ul></li> 
+<li ><a href="/index.php?option=com_content&amp;view=article&amp;id=57&amp;Itemid=65" class="menu-item3" id="menu65" title="FAQS"><span class="menu-title">FAQS</span></a></li> 
+<li ><a href="/index.php?option=com_content&amp;view=article&amp;id=58&amp;Itemid=58" class="menu-item4" id="menu58" title="Downloads"><span class="menu-title">Downloads</span></a></li> 
+<li ><a href="/index.php?option=com_content&amp;view=article&amp;id=59&amp;Itemid=27" class="menu-item5 last-item" id="menu27" title="Contact Us"><span class="menu-title">Contact Us</span></a></li> 
+</ul>				<div id="ja-search">
+			<form action="index.php" method="post">
+	<div class="search">
+		<input name="searchword" id="mod_search_searchword" maxlength="20" alt="Search" class="inputbox" type="text" size="20" value="search..."  onblur="if(this.value=='') this.value='search...';" onfocus="if(this.value=='search...') this.value='';" />	</div>
+	<input type="hidden" name="task"   value="search" />
+	<input type="hidden" name="option" value="com_search" />
+	<input type="hidden" name="Itemid" value="1" />
+</form>
+		</div>
+			</div>
+</div>
+<!-- END: MAIN NAVIGATION -->
+
+<!-- BEGIN: HEADER -->
+<div id="ja-headerwrap">
+<div id="ja-header" class="clearfix">
+
+			<h1 class="logo">
+			<a href="/index.php" title="The Kenya Magistrates and Judges Association"><span>The Kenya Magistrates and Judges Association</span></a>
+		</h1>
+		
+		<div id="ja-login">
+		<div id="login-wrap">
+<form action="/index.php" method="post" name="login" id="login" >
+	
+			<label for="mod_login_username" class="ja-login-user">
+				<span>Username</span>
+				<input name="username" id="mod_login_username" type="text" class="inputbox" alt="username" size="10" />
+			</label>
+
+			<label for="mod_login_password" class="ja-login-password">
+				<span>Password</span>
+				<input type="password" id="mod_login_password" name="passwd" class="inputbox" size="10" alt="password" />
+			</label>
+
+			<label for="mod_login_remember">
+				<input type="hidden" name="remember" id="mod_login_remember" class="inputbox" value="yes" alt="Remember Me" />
+			</label>
+			<input type="submit" name="Submit" class="button" value="Login" />
+
+			<div class="ja-login-links">
+			<a href="/index.php?option=com_user&amp;view=reset">
+			Forgot your password?</a>
+			<!--<a href="/index.php?option=com_user&amp;view=remind">
+			Forgot your username?</a>-->
+							<a href="/index.php?option=com_user&amp;view=register">
+					Create an account</a>
+						</div>
+	
+	<input type="hidden" name="option" value="com_user" />
+	<input type="hidden" name="task" value="login" />
+	<input type="hidden" name="return" value="L2luZGV4LnBocA==" />
+	<input type="hidden" name="9914aa20fb67a11cd8f9b00f7543d237" value="1" /></form>
+</div>
+
+	</div>
+	
+</div>
+</div>
+<!-- END: HEADER -->
+
+<div id="ja-containerwrap">
+<div id="ja-container" class="clearfix">
+
+  <div id="ja-mainbody" class="clearfix">
+  
+  	<!-- BEGIN:  TOPSPOTLIGHT -->
+	<div id="ja-topsl">
+		<script src="http://www.kmja.or.ke//modules/mod_jaslideshow/ja_slideshow/ja.slideshow.js" type="text/javascript"></script>
+		<div id="ja-slideshow-wrap">
+			<div id="ja-slideshow-case" class="ja-slideshow-case">
+				<img src="http://www.kmja.or.ke/images/stories/slideshow/sl-1.jpg" alt="KMJA" title="KMJA" />
+      		</div>
+			<div id="ja-slidebar" class="ja-slidebar clearfix">
+			</div>
+		</div>
+		<script type="text/javascript">
+		//<![CDATA[
+		var	JaSlideshow = new JaSlideshowClass({
+				siteurl: 'http://www.kmja.or.ke/',
+				type: 'fade',
+				pan: '10',
+				zoom: '10',
+				width: 690,
+				height: 250,
+				twidth: 100,
+				theight: 100,
+				url: '',
+				images: ['images/stories/slideshow/sl-1.jpg','images/stories/slideshow/sl-2.jpg','images/stories/slideshow/sl-3.jpg'],
+				thumbnails: ['images/resized/images/stories/slideshow/sl-1_100_100.jpg','images/resized/images/stories/slideshow/sl-2_100_100.jpg','images/resized/images/stories/slideshow/sl-3_100_100.jpg'],
+																				duration: [2000, 5000],
+				transition: Fx.Transitions.sineInOut ,
+				navigation: '',
+				animationRepeat: 'true',
+				classes: ['prev', 'next', 'active'],
+				play : '1',
+				mouse_action: 'click'
+			});
+		//]]>
+		</script>
+
+		
+	</div>
+	<!-- END: TOPSPOTLIGHT -->
+	
+	<!-- BEGIN: CONTENT -->
+	<div id="ja-content" class="clearfix">
+
+		
+
+		<div id="ja-current-content" class="clearfix">
+		
+			<!-- BEGIN: PATHWAY -->
+			<div id="ja-pathwaywrap"><div id="ja-pathway"><div class="ja-innerpad">
+				<span class="breadcrumbs pathway">
+Home</span>
+
+			</div></div></div>
+			<!-- END: PATHWAY -->
+
+			<table class="blog" cellpadding="0" cellspacing="0">
+
+<tr>
+	<td valign="top">
+		<table width="100%"  cellpadding="0" cellspacing="0">
+		<tr>
+										<td valign="top" width="100%" class="article_column">
+				
+<table class="contentpaneopen">
+<tr>
+		<td class="contentheading" width="100%">
+					Welcome to The Kenya Magistrates and Judges Association (KMJA)			</td>
+	
+	
+	
+		</tr>
+</table>
+<table class="contentpaneopen">
+
+
+
+
+<tr>
+<td valign="top" colspan="2">
+<p><img class="caption" src="/images/stories/demo/sam-1.jpg" border="0" align="right" style="float: right; border: 0;" /></p>
+<p>The Kenya Magistrates and Judges Association (KMJA), a non-profit professional organization, and primarily drawing its membership from serving Judicial Officers was established in 1972 and registered as a Society. Initially, it was registered as Kenya Magistrates Association (KMA) with the objective of safeguarding the welfare of its members. Over time, all magistrates in service became automatic members upon employment. Membership expanded with the affiliation to the Commonwealth Magistrates and Judges Association and the entry of the Judges into the Association albeit not as automatic members but upon subscription. This necessitated a change of name to KMJA.  
+</td>
+</tr>
+
+
+<tr>
+	<td  colspan="2">
+		<a href="/index.php?option=com_content&amp;view=article&amp;id=47:welcome-to-the-kenya-magistrates-and-judges-association-kmja&amp;catid=34:demo-category&amp;Itemid=28" class="readon">
+			Read more...</a>
+	</td>
+</tr>
+
+</table>
+<span class="article_separator">&nbsp;</span>
+</td>
+								
+		</tr>
+		</table>
+	</td>
+</tr>
+
+</table>
+
+	
+			
+		</div>
+
+	</div>
+	<!-- END: CONTENT -->
+
+    <!-- BEGIN: LEFT COLUMN -->
+	<div id="ja-col1">
+		<div class="ja-innerpad">
+				<div class="module_menu">
+			<div>
+				<div>
+					<div>
+													<h3>Main Menu</h3>
+											<ul class="menu"><li id="current" class="active item1"><a href="http://www.kmja.or.ke/"><span>Home</span></a></li><li class="item53"><a href="/index.php?option=com_content&amp;view=article&amp;id=52&amp;Itemid=53"><span>About Us</span></a></li><li class="parent item54"><a href="/index.php?option=com_content&amp;view=article&amp;id=53&amp;Itemid=54"><span>The Structure</span></a></li><li class="item65"><a href="/index.php?option=com_content&amp;view=article&amp;id=57&amp;Itemid=65"><span>FAQS</span></a></li><li class="item58"><a href="/index.php?option=com_content&amp;view=article&amp;id=58&amp;Itemid=58"><span>Downloads</span></a></li><li class="item27"><a href="/index.php?option=com_content&amp;view=article&amp;id=59&amp;Itemid=27"><span>Contact Us</span></a></li></ul>					</div>
+				</div>
+			</div>
+		</div>
+			<div class="module_hilite">
+			<div>
+				<div>
+					<div>
+													<h3>Who's Online</h3>
+											 We have&nbsp;2 guests&nbsp;online					</div>
+				</div>
+			</div>
+		</div>
+	
+		</div>
+	</div><br />
+	<!-- END: LEFT COLUMN -->
+			
+	</div>
+		
+		<!-- BEGIN: RIGHT COLUMN -->
+	<div id="ja-col2"><div id="ja-col2-top"><div id="ja-col2-bot" class="clearfix">
+
+			
+				<div class="moduletable">
+					<h3>Downloads</h3>
+					<ul>
+<li><a href="/images/stories/downloads/KMJA_AGM_President_Speech.doc" target="_blank">KMJA AGM President Speech</a></li>
+<li><a href="/images/stories/downloads/KMJA_Draft_Executive_Brief.doc" target="_blank">KMJA Draft Executive Brief</a></li>
+<li><a href="/images/stories/downloads/KMJA_TOT_MAANZONI_REPORT.doc" target="_blank">KMJA TOT Maanzoni Report</a></li>
+<li><a href="/images/stories/downloads/situation analysis.pdf" target="_blank">Situation Analysis</a></li>
+<li><a href="/images/stories/downloads/results framework.pdf" target="_blank">Results Framework</a></li>
+<li><a href="/images/stories/downloads/strategies.pdf" target="_blank">Strategies</a></li>
+<li><a href="/images/stories/downloads/risks.pdf" target="_blank">Risks</a></li>
+<li><a href="/images/stories/downloads/stakeholders analysis.pdf" target="_blank">Stakeholders Analysis</a></li>
+<li><a href="/images/stories/downloads/implementation challenges and strategic alignment.pdf" target="_blank">Implementation Challenges and Strategic Alignment</a></li>
+<li><a href="/images/stories/downloads/monitoring and evaluation.pdf" target="_blank">Monitoring and Evaluation</a></li>
+</ul>		</div>
+			<div class="moduletable">
+					<p style="text-align: center;"><a href="#" target="_blank" title="Find us on Facebook"><img src="/images/stories/facebook.jpg" border="0" width="138" height="39" /></a></p>
+<p style="text-align: center;"><a href="#" target="_blank" title="Follow us on twitter"><img src="/images/stories/twitter.jpg" border="0" width="116" height="48" /></a></p>		</div>
+	
+	</div></div></div>
+	<!-- END: RIGHT COLUMN -->
+	
+</div></div>
+
+
+<!-- BEGIN: FOOTER -->
+<div id="ja-footerwrap">
+<div id="ja-footer" class="clearfix">
+
+	<ul id="mainlevel-nav"><li><a href="/index.php?option=com_content&amp;view=article&amp;id=47&amp;Itemid=28" class="mainlevel-nav" >Home</a></li><li><a href="/index.php?option=com_content&amp;view=article&amp;id=52&amp;Itemid=29" class="mainlevel-nav" >About KMJA</a></li><li><a href="/index.php?option=com_content&amp;view=article&amp;id=57&amp;Itemid=18" class="mainlevel-nav" >FAQS</a></li><li><a href="/index.php?option=com_content&amp;view=article&amp;id=59&amp;Itemid=30" class="mainlevel-nav" >Contact Us</a></li></ul>
+	<small>Copyright &#169; 2013 The Kenya Magistrates and Judges Association. All Rights Reserved. Web Solution by 
+<a href="http://www.footprint.co.ke/" title="FOOTPRINT!" target="blank">FOOTPRINT</a>.</small>
+<!--<small><a href="http://www.joomla.org">Joomla!</a> is Free Software released under the <a href="http://www.gnu.org/licenses/gpl-2.0.html">GNU/GPL License.</a></small> -->
+
+
+</div>
+</div>
+<!-- END: FOOTER -->
+
+</div>
+
+
+</body>
+
+</html>
