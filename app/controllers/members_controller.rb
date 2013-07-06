@@ -8,6 +8,7 @@ class MembersController < ApplicationController
     @search = Member.judges.with_balance.search(params[:q])
     @members_pdf = @search.result.order("id ASC")
     @members = @search.result.paginate(:page => params[:page], :per_page => 20).order("id ASC")
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @members }
