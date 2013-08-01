@@ -6,6 +6,8 @@
   <%= f.select :region_eq, Member::Regions, include_blank: "#{'-'*14}Region#{'-'*14}"%>
   <br /><br />
   <%= f.select :active_eq, ['true', 'false'], include_blank: "#{'-'*14}Active#{'-'*14}"%>
+   <%= f.number_field :balance_gteq, placeholder: "with balance from"%>
+  <%= f.number_field :balance_lteq, placeholder: "with balance to"%>
   <%= f.submit "Search", class: "btn btn-primary"%>
   <%= link_to "clear", members_path, class: "btn btn-warning"%>
 <%end%>

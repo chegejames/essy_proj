@@ -1,5 +1,6 @@
 class MembersController < ApplicationController
  load_and_authorize_resource :except => [:judges_with_balances]
+
   def deleted_members
     @search = Member.only_deleted.search(params[:q])
     @members = @search.result.paginate(:page => params[:page], :per_page => 20)
