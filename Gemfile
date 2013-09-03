@@ -68,3 +68,7 @@ gem 'cancan'
 gem "acts_as_paranoid", "~>0.4.0"
 
 gem "heroku", "~> 2.39.2"
+
+gem 'turbolinks'
+
+gem 'jquery-turbolinks'
