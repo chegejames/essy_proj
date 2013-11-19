@@ -7,7 +7,8 @@ class Payment < ActiveRecord::Base
   validates :bank_name, :cheque_no, presence: true, :if => :paid_with_cheque?
   validates :bank_name, :cheque_no, :length => {:is => 0}, :if => :paid_with_cash?
   Payment_modes = ['cash', 'cheque']
-  #after_save :update_member_balance
+  before_destroy :set_balance_to_nil
+  scope :with_balance, where('balance > 0')
 
   def paid_with_cheque?
     mode_of_payment == "cheque"

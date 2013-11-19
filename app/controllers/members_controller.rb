@@ -5,10 +5,18 @@ class MembersController < ApplicationController
     @search = Member.only_deleted.search(params[:q])
     @members = @search.result.paginate(:page => params[:page], :per_page => 20)
   end
+
   def judges_with_balances
-    @search = Member.judges.with_balance.search(params[:q])
-    @members_pdf = @search.result.order("id ASC")
-    @members = @search.result.paginate(:page => params[:page], :per_page => 20).order("id ASC")
+    if params[:q].present?
+      @search = Member.judges.search(params[:q])
+      @members = @search.result.paginate(:page => params[:page], :per_page => 20).order("id ASC")
+      @dat = [params[:q]["payments_date_gteq(1i)"], params[:q]["payments_date_gteq(2i)"], params[:q]["payments_date_gteq(3i)"]]
+    else
+      @search = Member.judges.search(params[:q])
+      @members_pdf = @search.result.order("id ASC")
+      @members = @search.result.paginate(:page => params[:page], :per_page => 20).order("id ASC")
+    end
+
 
     respond_to do |format|
       format.html # index.html.erb

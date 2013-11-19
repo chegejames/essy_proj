@@ -49,14 +49,18 @@ class Member < ActiveRecord::Base
   end
 
   def update_member_balance_when_payment_has_been_deleted
-    balance = self.payments.sum(:invoice) - self.payments.sum(:amount)
-    self.update_attributes(:balance => balance)
+    if self.payments.present?
+      balance = self.payments.sum(:invoice) - self.payments.sum(:amount)
+      self.update_attributes(:balance => balance)
+    else
+      self.update_attributes(:balance => nil, :active => false)
+    end
   end
 
   def self.invoice_magistrates
     count = 0
     Member.magistrates.active.includes(:payments).each do | magistrate|
-      unless magistrate.payments.last.date.this_month?
+      unless magistrate.payments.last.date.this_month
         count += 1
         amount_to_pay = PaymentPlan.last.magistrate
         magistrate.payments.create(:invoice => amount_to_pay, :amount => amount_to_pay, :balance => 0, :date => Time.now.to_date, :region => magistrate.region)
