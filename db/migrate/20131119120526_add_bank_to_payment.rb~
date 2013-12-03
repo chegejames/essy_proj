@@ -1,0 +1,5 @@
+class AddBankToPayment < ActiveRecord::Migration
+  def change
+    add_column :payments, :BankAccount, :references
+  end
+end

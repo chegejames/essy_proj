@@ -17,7 +17,7 @@
      <th>Invoice</th>
      <th>Mode of payment</th>
      <th>Cheque no</th>
-     <th>Bank name</th>
+     <th>Bank Account</th>
      <th>Amount</th>
      <th>Balance</th>
      <th></th>
@@ -29,7 +29,9 @@
       <td><%= number_to_currency(@payment.invoice, :unit => "KES", :format => "%n %u")%></td>
       <td><%= @payment.mode_of_payment %></td>
       <td><%= @payment.cheque_no %></td>
+      <% if @payment.bank_account.present?%>
       <td><%= @payment.bank_name %></td>
+      <%end%>
       <td><%= number_to_currency(@payment.amount, :unit => "KES", :format => "%n %u") %></td>
       <td><%= number_to_currency(@payment.balance, :unit => "KES", :format => "%n %u") %></td>
       <% unless @payment.invoice.present?%>

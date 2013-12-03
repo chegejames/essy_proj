@@ -15,13 +15,12 @@
     <%= f.label :mode_of_payment %><br />
     <%= f.select :mode_of_payment, Payment::Payment_modes, autofocus: true%>
 
+    <%= f.label :bank_account %><br />
+    <%bank_account = BankAccount.all.map{|bank_account| [bank_account.account_name+" - "+bank_account.account_number, bank_account.id]}%>
+    <%= f.select :bank_account_id, options_for_select(bank_account, selected: @bank_account)%>
+
     <%= f.label :cheque_no_if_cheque %><br />
     <%= f.text_field :cheque_no %>
-
-
-    <%= f.label :bank_name_if_cheque %><br />
-    <%= f.text_field :bank_name %>
-
 
     <%= f.label :amount %><br />
     <%= f.number_field :amount, required: true%>

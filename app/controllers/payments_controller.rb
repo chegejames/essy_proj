@@ -67,13 +67,15 @@ class PaymentsController < ApplicationController
   def edit
     @member = Member.find(params[:member_id])
     @payment = Payment.find(params[:id])
+    @bank_account = @payment.bank_account.id
   end
 
   # POST /payments
   # POST /payments.json
   def create
     @member = Member.find(params[:member_id])
-    @payment = @member.payments.build(params[:payment])
+    @payment = @member.payments.build(params[:payment].except(:bank_account_id))
+    @payment.bank_account = BankAccount.find(params[:payment][:bank_account_id])
     @payment.region = @member.region
     @payment.get_balance
 
