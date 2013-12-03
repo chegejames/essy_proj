@@ -53,10 +53,12 @@ class Member < ActiveRecord::Base
     self.update_attributes(:balance => balance)
   end
 
+
+
   def self.invoice_magistrates
     count = 0
     Member.magistrates.active.includes(:payments).each do | magistrate|
-      unless magistrate.payments.last.date.this_month?
+      unless magistrate.payments.last.paid_this_month?
         count += 1
         amount_to_pay = PaymentPlan.last.magistrate
         magistrate.payments.create(:invoice => amount_to_pay, :amount => amount_to_pay, :balance => 0, :date => Time.now.to_date, :region => magistrate.region)
@@ -68,7 +70,7 @@ class Member < ActiveRecord::Base
   def self.invoice_kadhis
     count = 0
     Member.kadhis.active.includes(:payments).each do | kadhi|
-      unless kadhi.payments.last.date.this_month?
+      unless kadhi.payments.last.paid_this_month?
         count += 1
         amount_to_pay = PaymentPlan.last.kadhi
         kadhi.payments.create(:invoice => amount_to_pay, :amount => amount_to_pay, :balance => 0, :date => Time.now.to_date, :region => kadhi.region)
@@ -80,8 +82,7 @@ class Member < ActiveRecord::Base
   def self.invoice_judges
     count = 0
     Member.judges.active.includes(:payments).each do |judge|
-      last_payment =  judge.payments.last
-      unless last_payment.date.this_year?
+      unless judge.payments.last.paid_this_year?
         count += 1
         amount_to_pay = PaymentPlan.last.judge
         balance = last_payment.balance + amount_to_pay
@@ -91,6 +92,7 @@ class Member < ActiveRecord::Base
     end
     return count
   end
+
 
   def create_first_invoice
     member = self

@@ -1,11 +1,12 @@
 class Payment < ActiveRecord::Base
   belongs_to :member
+  belongs_to :bank_account
 
   acts_as_paranoid
-  attr_accessible :amount, :balance, :bank_name, :cheque_no, :mode_of_payment, :total_amount, :invoice, :date, :region
+  attr_accessible :amount, :balance, :bank_name, :cheque_no, :mode_of_payment, :total_amount, :invoice, :date, :region, :bank_account_id
   validates :amount, presence: true, numericality: true, allow_blank: true
-  validates :bank_name, :cheque_no, presence: true, :if => :paid_with_cheque?
-  validates :bank_name, :cheque_no, :length => {:is => 0}, :if => :paid_with_cash?
+  validates :cheque_no, presence: true, :if => :paid_with_cheque?
+  validates  :cheque_no, :length => {:is => 0}, :if => :paid_with_cash?
   Payment_modes = ['cash', 'cheque']
   #after_save :update_member_balance
 
@@ -35,5 +36,13 @@ class Payment < ActiveRecord::Base
     member = self.member
     balance = self.balance
     member.update_attributes(:balance => balance)
+  end
+
+   def paid_this_month?
+    self.date.strftime("%B %Y") ==  Date.today.strftime("%B %Y")
+  end
+
+  def paid_this_year?
+    self.date.strftime("%Y") ==  Date.today.strftime("%Y")
   end
 end

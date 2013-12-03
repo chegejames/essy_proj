@@ -1,0 +1,29 @@
+<h1>Listing bank_accounts</h1>
+
+<table>
+  <tr>
+    <th>Bank name</th>
+    <th>Account name</th>
+    <th>Account number</th>
+    <th>Beneficiary branch</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @bank_accounts.each do |bank_account| %>
+  <tr>
+    <td><%= bank_account.bank_name %></td>
+    <td><%= bank_account.account_name %></td>
+    <td><%= bank_account.account_number %></td>
+    <td><%= bank_account.beneficiary_branch %></td>
+    <td><%= link_to 'Show', bank_account %></td>
+    <td><%= link_to 'Edit', edit_bank_account_path(bank_account) %></td>
+    <td><%= link_to 'Destroy', bank_account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Bank account', new_bank_account_path %>

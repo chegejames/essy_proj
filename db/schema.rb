@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130506080410) do
+ActiveRecord::Schema.define(:version => 20131119120526) do
+
+  create_table "bank_accounts", :force => true do |t|
+    t.string   "bank_name"
+    t.string   "account_name"
+    t.string   "account_number"
+    t.string   "beneficiary_branch"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
 
   create_table "members", :force => true do |t|
     t.string   "first_name"
@@ -23,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20130506080410) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.datetime "deleted_at"
+    t.string   "nationalid"
   end
 
   create_table "payment_plans", :force => true do |t|
@@ -47,8 +57,10 @@ ActiveRecord::Schema.define(:version => 20130506080410) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.datetime "deleted_at"
+    t.integer  "bank_account_id"
   end
 
+  add_index "payments", ["bank_account_id"], :name => "index_payments_on_bank_account_id"
   add_index "payments", ["member_id"], :name => "index_payments_on_member_id"
 
   create_table "users", :force => true do |t|
