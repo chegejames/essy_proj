@@ -72,3 +72,7 @@ gem "heroku", "~> 2.39.2"
 gem 'turbolinks'
 
 gem 'jquery-turbolinks'
+
+#gem "tesseract-ocr"
+
+#gem "paperclip"

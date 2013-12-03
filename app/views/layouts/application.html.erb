@@ -53,7 +53,13 @@
         </ul>
       </li>
       <li><%= link_to "Late payments", judges_with_balances_path%></li>
-      <li><%= link_to "Bank Accounts", bank_accounts_path%></li>
+      <li class="dropdown">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+         Bank Accounts <b class="caret"></b>
+            <ul class="dropdown-menu">
+              <li><%= link_to "View Bank Accounts", bank_accounts_path%></li>
+               <li><%= link_to "Add Bank Account", new_bank_account_path%></li>
+           </ul>
        </li>
       <li class="dropdown">
          <a href="#" class="dropdown-toggle" data-toggle="dropdown">

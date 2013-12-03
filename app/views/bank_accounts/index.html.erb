@@ -1,6 +1,6 @@
 <h1>Listing bank_accounts</h1>
 
-<table>
+<table class="table table-striped table-bordered table-condensed table-hover">
   <tr>
     <th>Bank name</th>
     <th>Account name</th>
@@ -17,13 +17,12 @@
     <td><%= bank_account.account_name %></td>
     <td><%= bank_account.account_number %></td>
     <td><%= bank_account.beneficiary_branch %></td>
-    <td><%= link_to 'Show', bank_account %></td>
-    <td><%= link_to 'Edit', edit_bank_account_path(bank_account) %></td>
-    <td><%= link_to 'Destroy', bank_account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', bank_account, class: "btn btn-mini btn-info" %></td>
+    <td><%= link_to 'Edit', edit_bank_account_path(bank_account), class: "btn btn-mini btn-warning" %></td>
+    <td><%= link_to 'Destroy', bank_account, method: :delete, data: { confirm: 'Are you sure?' },  class: "btn btn-mini btn-danger"%></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Bank account', new_bank_account_path %>
