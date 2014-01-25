@@ -69,7 +69,7 @@ class Member < ActiveRecord::Base
       if magistrate.payments.empty?
         deactivate_member(magistrate)
       elsif !magistrate.payments.last.paid_this_month?
-        puts "ok ok ok ok ok "
+        puts !magistrate.payments.last.paid_this_month?
         count += 1
         amount_to_pay = PaymentPlan.last.magistrate
         magistrate.payments.create(:invoice => amount_to_pay, :amount => amount_to_pay, :balance => 0, :date => Time.now.to_date, :region => magistrate.region)
