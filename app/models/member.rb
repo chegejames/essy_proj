@@ -62,7 +62,7 @@ class Member < ActiveRecord::Base
   end
 
 
-
+  #FIXME prevent repeat invoices
   def self.invoice_magistrates
     count = 0
     Member.magistrates.active.includes(:payments).each do |magistrate|
@@ -145,6 +145,19 @@ class Member < ActiveRecord::Base
       member.payments.create(:date => Time.now.beginning_of_month.to_date, :invoice => amount_to_pay, :balance => balance, :amount => amount_to_pay, :region => member.region)
       member.update_column(:balance, balance)
     end
+  end
+
+
+  def self.get_balances_as_of_dates(members, params)
+    @gtdate = Date.parse(params["payments_date_gteq(1i)"]+"-"+params["payments_date_gteq(2i)"]+"-"+params["payments_date_gteq(3i)"]).beginning_of_year
+    @ltdate = Date.parse(params["payments_date_lteq(1i)"]+"-"+params["payments_date_lteq(2i)"]+"-"+params["payments_date_lteq(3i)"])
+    @result = []
+    members.each do |member|
+      @payments = member.payments.where(:date => @gtdate..@ltdate)
+      @balance = @payments.sum(:invoice) - @payments.sum(:amount)
+      @result << [member, @balance]
+    end
+    return @result
   end
 
 end

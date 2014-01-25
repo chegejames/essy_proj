@@ -39,13 +39,9 @@ class Payment < ActiveRecord::Base
     member.update_attributes(:balance => balance)
   end
 
-   def paid_this_month?
-    self.date.strftime("%B %Y") ==  Date.today.strftime("%B %Y")
+  def not_paid_this_month?
+    self.date.strftime("%B %Y") !=  Date.today.strftime("%B %Y")
   end
-
-   def not_paid_this_month?
-     self.date.strftime("%B %Y") !=  Date.today.strftime("%B %Y")
-   end
 
   def not_paid_this_year?
     self.date.strftime("%Y") !=  Date.today.strftime("%Y")

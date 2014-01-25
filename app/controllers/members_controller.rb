@@ -8,11 +8,16 @@ class MembersController < ApplicationController
 
   def judges_with_balances
     if params[:q].present?
+      params[:q]["payments_date_gteq(2i)"] = "1"
+      params[:q]["payments_date_gteq(3i)"] = "1"
       @search = Member.judges.search(params[:q])
-      @members = @search.result.paginate(:page => params[:page], :per_page => 20).order("id ASC")
-      @dat = [params[:q]["payments_date_gteq(1i)"], params[:q]["payments_date_gteq(2i)"], params[:q]["payments_date_gteq(3i)"]]
+      #@members = @search.result.paginate(:page => params[:page], :per_page => 20).order("id ASC")
+      @result = @search.result.uniq
+      @members = Member.get_balances_as_of_dates(@result, params[:q])
+      @with_search_terms = true
     else
-      @search = Member.judges.search(params[:q])
+      @with_search_terms = false
+      @search = Member.judges.with_balance.search(params[:q])
       @members_pdf = @search.result.order("id ASC")
       @members = @search.result.paginate(:page => params[:page], :per_page => 20).order("id ASC")
     end
@@ -25,9 +30,6 @@ class MembersController < ApplicationController
         render :pdf => "judges with balances",
       end
     end
-  end
-  def invoice
-
   end
 
   def create_invoice

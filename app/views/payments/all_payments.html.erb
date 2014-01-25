@@ -1,5 +1,10 @@
 <div class="row">
 <div class="span9">
+<% if @payments.any?%>
+  <span class="label label-success"><%= pluralize(@payments.count,"payment")%> found</span>
+<%else%>
+  <span class= "label label-error">no payments found</span>
+<%end%>
 <%= render 'search'%>
 </div>
 <div class="span3 offset2">
