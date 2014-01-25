@@ -89,7 +89,7 @@ class Member < ActiveRecord::Base
       unless judge.payments.last.paid_this_year?
         count += 1
         amount_to_pay = PaymentPlan.last.judge
-        balance = last_payment.balance + amount_to_pay
+        balance = judge.balance + amount_to_pay
         judge.payments.create!(:date => Time.now.beginning_of_year.to_date, :invoice => amount_to_pay, :amount => 0, :balance => balance, :region => judge.region)
         judge.update_column(:balance => balance)
       end
