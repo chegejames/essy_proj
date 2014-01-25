@@ -48,12 +48,16 @@ class Member < ActiveRecord::Base
     end
   end
 
+  def deactivate_member(member)
+     member.update_attributes(:balance => nil, :active => false)
+  end
+
   def update_member_balance_when_payment_has_been_deleted
     if self.payments.present?
       balance = self.payments.sum(:invoice) - self.payments.sum(:amount)
       self.update_attributes(:balance => balance)
     else
-      self.update_attributes(:balance => nil, :active => false)
+       deactivate_member(self)
     end
   end
 
