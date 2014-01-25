@@ -68,8 +68,7 @@ class Member < ActiveRecord::Base
     Member.magistrates.active.includes(:payments).each do |magistrate|
       if magistrate.payments.empty?
         deactivate_member(magistrate)
-      elsif !magistrate.payments.last.paid_this_month?
-        puts !magistrate.payments.last.paid_this_month?
+      elsif magistrate.payments.last.not_paid_this_month?
         count += 1
         amount_to_pay = PaymentPlan.last.magistrate
         magistrate.payments.create(:invoice => amount_to_pay, :amount => amount_to_pay, :balance => 0, :date => Time.now.to_date, :region => magistrate.region)
@@ -84,7 +83,7 @@ class Member < ActiveRecord::Base
     Member.kadhis.active.includes(:payments).each do |kadhi|
       if kadhi.payments.empty?
          deactivate_member(kadhi)
-      elsif !kadhi.payments.last.paid_this_month?
+      elsif kadhi.payments.last.not_paid_this_month?
         count += 1
         amount_to_pay = PaymentPlan.last.kadhi
         kadhi.payments.create(:invoice => amount_to_pay, :amount => amount_to_pay, :balance => 0, :date => Time.now.to_date, :region => kadhi.region)
@@ -98,7 +97,7 @@ class Member < ActiveRecord::Base
     Member.judges.active.includes(:payments).each do |judge|
        if judge.payments.empty?
         deactivate_member(judge)
-      elsif !judge.payments.last.paid_this_year?
+      elsif judge.payments.last.not_paid_this_year?
         count += 1
         amount_to_pay = PaymentPlan.last.judge
         balance = judge.balance + amount_to_pay
