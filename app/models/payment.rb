@@ -8,7 +8,7 @@ class Payment < ActiveRecord::Base
   validates :cheque_no, presence: true, :if => :paid_with_cheque?
   validates  :cheque_no, :length => {:is => 0}, :if => :paid_with_cash?
   Payment_modes = ['cash', 'cheque']
-  before_destroy :set_balance_to_nil
+
   scope :with_balance, where('balance > 0')
 
   def paid_with_cheque?
