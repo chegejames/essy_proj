@@ -11,9 +11,9 @@ class MembersController < ApplicationController
       params[:q]["payments_date_gteq(2i)"] = "1"
       params[:q]["payments_date_gteq(3i)"] = "1"
       @search = Member.judges.search(params[:q])
-      #@members = @search.result.paginate(:page => params[:page], :per_page => 20).order("id ASC")
       @result = @search.result.uniq
       @members = Member.get_balances_as_of_dates(@result, params[:q])
+      @members_pdf = @members
       @with_search_terms = true
     else
       @with_search_terms = false
