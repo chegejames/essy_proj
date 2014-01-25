@@ -43,6 +43,10 @@ class Payment < ActiveRecord::Base
     self.date.strftime("%B %Y") ==  Date.today.strftime("%B %Y")
   end
 
+   def not_paid_this_month
+     self.date.strftime("%B %Y") !=  Date.today.strftime("%B %Y")
+   end
+
   def paid_this_year?
     self.date.strftime("%Y") ==  Date.today.strftime("%Y")
   end
