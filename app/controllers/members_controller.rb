@@ -12,7 +12,7 @@ class MembersController < ApplicationController
       params[:q]["payments_date_gteq(3i)"] = "1"
       @search = Member.judges.search(params[:q])
       @result = @search.result.uniq
-      @members = Member.get_balances_as_of_dates(@result, params[:q])
+      @members, @total_balance = Member.get_balances_as_of_dates(@result, params[:q])
       @members_pdf = @members
       @with_search_terms = true
     else
@@ -20,6 +20,7 @@ class MembersController < ApplicationController
       @search = Member.judges.with_balance.search(params[:q])
       @members_pdf = @search.result.order("id ASC")
       @members = @search.result.paginate(:page => params[:page], :per_page => 20).order("id ASC")
+      @total_balance = @members.sum(:balance)
     end
 
 

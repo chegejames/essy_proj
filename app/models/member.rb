@@ -152,12 +152,14 @@ class Member < ActiveRecord::Base
     @gtdate = Date.parse(params["payments_date_gteq(1i)"]+"-"+params["payments_date_gteq(2i)"]+"-"+params["payments_date_gteq(3i)"]).beginning_of_year
     @ltdate = Date.parse(params["payments_date_lteq(1i)"]+"-"+params["payments_date_lteq(2i)"]+"-"+params["payments_date_lteq(3i)"])
     @result = []
+    @total_balance = 0
     members.each do |member|
       @payments = member.payments.where(:date => @gtdate..@ltdate)
       @balance = @payments.sum(:invoice) - @payments.sum(:amount)
+      @total_balance = @total_balance + @balance
       @result << [member, @balance] if @balance > 0
     end
-    return @result
+    return @result, @total_balance
   end
 
 end

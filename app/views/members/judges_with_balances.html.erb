@@ -3,6 +3,10 @@
 <%else%>
   <span class= "label label-error">no judges with balances</span>
 <%end%>
+<section class="row-fluid">
+  <h2 class="span8">Judges with balances</h2>
+  <section class="span3"><%= render "stats"%></section>
+</section>
 <h2>Judges with balances</h2>
 <%= search_form_for @search, url: judges_with_balances_path, html: {class: "form-search"} do |f|%>
   <%= f.number_field :id_eq, placeholder: "Membership ID"%>
