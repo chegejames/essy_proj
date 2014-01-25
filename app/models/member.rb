@@ -65,7 +65,7 @@ class Member < ActiveRecord::Base
 
   def self.invoice_magistrates
     count = 0
-    Member.magistrates.active.includes(:payments).each do | magistrate|
+    Member.magistrates.active.includes(:payments).each do |magistrate|
       if magistrate.payments.empty?
         deactivate_member(magistrate)
       elsif !magistrate.payments.last.paid_this_month?
@@ -81,7 +81,7 @@ class Member < ActiveRecord::Base
 
   def self.invoice_kadhis
     count = 0
-    Member.kadhis.active.includes(:payments).each do | kadhi|
+    Member.kadhis.active.includes(:payments).each do |kadhi|
       if kadhi.payments.empty?
          deactivate_member(kadhi)
       elsif !kadhi.payments.last.paid_this_month?
