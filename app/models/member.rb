@@ -155,7 +155,7 @@ class Member < ActiveRecord::Base
     members.each do |member|
       @payments = member.payments.where(:date => @gtdate..@ltdate)
       @balance = @payments.sum(:invoice) - @payments.sum(:amount)
-      @result << [member, @balance]
+      @result << [member, @balance] if @balance > 0
     end
     return @result
   end
