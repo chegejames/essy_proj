@@ -66,9 +66,9 @@ class Member < ActiveRecord::Base
   def self.invoice_magistrates
     count = 0
     Member.magistrates.active.includes(:payments).each do | magistrate|
-      if magistrate.payments.empty?
+      if magistrate.payments.empty? then
         deactivate_member(magistrate)
-      elsif magistrate.payments.last.not_paid_this_month?
+      elsif !magistrate.payments.last.paid_this_month? then
         count += 1
         amount_to_pay = PaymentPlan.last.magistrate
         magistrate.payments.create(:invoice => amount_to_pay, :amount => amount_to_pay, :balance => 0, :date => Time.now.to_date, :region => magistrate.region)
