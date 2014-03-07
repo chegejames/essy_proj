@@ -49,7 +49,7 @@ end
 
 gem 'will_paginate'
 
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', "-> 3.0.2.1"
 
 gem 'wicked_pdf'
 
