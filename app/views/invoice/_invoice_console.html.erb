@@ -1,0 +1,10 @@
+<div id="invoice">
+<% if @count.present?%>
+<span class="label label-success"><%= "#{@count} #{@group} successfully invoiced  #{"and " + @already_paid.to_s + " had already paid" if @already_paid > 0}" %> </span>
+<%end%>
+<h1> Please select group to invoice</h1>
+<span class="label label-success"><%= notice%></span>
+<%= link_to "INVOICE JUDGES - ANNUALLY", invoice_create_invoice_path(:group => "judges"), class: "btn btn-inverse btn-block btn-large invoice", data: { confirm: 'Are you sure you want to invoice judges?'}%>
+<%= link_to "INVOICE KADHIS - MONTHLY", invoice_create_invoice_path(:group => "kadhis"), class: "btn  btn-block btn-large invoice", data: { confirm: 'Are you sure you want to invoice kadhis?'}%>
+<%= link_to "INVOICE MAGISTRATES - MONTHLY", invoice_create_invoice_path(:group => "magistrates"), class: "btn btn-inverse btn-block btn-large invoice", data: { confirm: 'Are you sure you want to invoice magistrates?' }%>
+</div>

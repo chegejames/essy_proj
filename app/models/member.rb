@@ -48,8 +48,8 @@ class Member < ActiveRecord::Base
     end
   end
 
-  def deactivate_member(member)
-     member.update_attributes(:balance => nil, :active => false)
+  def deactivate_member
+     self.update_attributes(:balance => nil, :active => false)
   end
 
   def update_member_balance_when_payment_has_been_deleted
@@ -57,55 +57,76 @@ class Member < ActiveRecord::Base
       balance = self.payments.sum(:invoice) - self.payments.sum(:amount)
       self.update_attributes(:balance => balance)
     else
-       deactivate_member(self)
+       self.deactivate_member
     end
   end
 
 
   #FIXME prevent repeat invoices
   def self.invoice_magistrates
+    deactivated = 0
+    already_paid = 0
     count = 0
-    Member.magistrates.active.includes(:payments).each do |magistrate|
-      if magistrate.payments.empty?
-        deactivate_member(magistrate)
-      elsif magistrate.payments.last.not_paid_this_month?
-        count += 1
-        amount_to_pay = PaymentPlan.last.magistrate
-        magistrate.payments.create(:invoice => amount_to_pay, :amount => amount_to_pay, :balance => 0, :date => Time.now.to_date, :region => magistrate.region)
+    ActiveRecord::Base.transaction do
+      Member.magistrates.active.includes(:payments).each do |magistrate|
+        if magistrate.payments.empty?
+          magistrate.deactivate_member
+          deactivated += 1
+        elsif magistrate.payments.last.not_paid_this_month?
+          count += 1
+          amount_to_pay = PaymentPlan.last.magistrate
+          magistrate.payments.create(:invoice => amount_to_pay, :amount => amount_to_pay, :balance => 0, :date => Time.now.to_date, :region => magistrate.region)
+        elsif magistrate.payments.last.paid_this_month?
+          already_paid +=1
+        end
       end
     end
-    return count
+    return count, already_paid, deactivated
   end
 
 
   def self.invoice_kadhis
+    deactivated = 0
+    already_paid = 0
     count = 0
-    Member.kadhis.active.includes(:payments).each do |kadhi|
-      if kadhi.payments.empty?
-         deactivate_member(kadhi)
-      elsif kadhi.payments.last.not_paid_this_month?
-        count += 1
-        amount_to_pay = PaymentPlan.last.kadhi
-        kadhi.payments.create(:invoice => amount_to_pay, :amount => amount_to_pay, :balance => 0, :date => Time.now.to_date, :region => kadhi.region)
+    ActiveRecord::Base.transaction do
+      Member.kadhis.active.includes(:payments).each do |kadhi|
+        if kadhi.payments.empty?
+          kadhi.deactivate_member
+          deactivated+=1
+        elsif kadhi.payments.last.not_paid_this_month?
+          count += 1
+          amount_to_pay = PaymentPlan.last.kadhi
+          kadhi.payments.create(:invoice => amount_to_pay, :amount => amount_to_pay, :balance => 0, :date => Time.now.to_date, :region => kadhi.region)
+        elsif kadhi.payments.last.paid_this_month?
+          already_paid +=1
+        end
       end
     end
-    return count
+    return count, already_paid, deactivated
   end
 
   def self.invoice_judges
+    deactivated = 0
+    already_paid = 0
     count = 0
+    ActiveRecord::Base.transaction do
     Member.judges.active.includes(:payments).each do |judge|
-       if judge.payments.empty?
-        deactivate_member(judge)
-      elsif judge.payments.last.not_paid_this_year?
-        count += 1
-        amount_to_pay = PaymentPlan.last.judge
-        balance = judge.balance + amount_to_pay
-        judge.payments.create!(:date => Time.now.beginning_of_year.to_date, :invoice => amount_to_pay, :amount => 0, :balance => balance, :region => judge.region)
-        judge.update_column(:balance, balance)
+        if judge.payments.empty?
+         judge.deactivate_member
+         deactivated += 1
+       elsif judge.payments.last.not_paid_this_year?
+         count += 1
+         amount_to_pay = PaymentPlan.last.judge
+         balance = judge.balance + amount_to_pay
+         judge.payments.create!(:date => Time.now.beginning_of_year.to_date, :invoice => amount_to_pay, :amount => 0, :balance => balance, :region => judge.region)
+         judge.update_column(:balance, balance)
+       elsif judge.payments.last.paid_this_year?
+         already_paid +=1
+       end
       end
     end
-    return count
+    return count, already_paid, deactivated
   end
 
 
@@ -160,6 +181,16 @@ class Member < ActiveRecord::Base
       @result << [member, @balance] if @balance > 0
     end
     return @result, @total_balance
+  end
+
+  def self.invoice_members_from_api(ids)
+    @members = Member.find_all_by_id([ids])
+    @members.each{|x| x.invoice_from_api}
+
+  end
+
+  def invoice_from_api
+    self.payments.create(:date => Time.now, :invoice => 700, :balance => 0, :amount => 700, :region => self.region)
   end
 
 end

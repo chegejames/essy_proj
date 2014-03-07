@@ -76,3 +76,5 @@ gem 'jquery-turbolinks'
 #gem "tesseract-ocr"
 
 #gem "paperclip"
+
+gem 'csv_shaper'

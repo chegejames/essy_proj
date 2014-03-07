@@ -33,25 +33,10 @@ class MembersController < ApplicationController
     end
   end
 
-  def create_invoice
-    group = params[:group]
-    count = 0
-    case group
-    when "judges"
-      count = Member.invoice_judges
-    when "magistrates"
-      count = Member.invoice_magistrates
-    when "kadhis"
-      count = Member.invoice_kadhis
-    end
-  rescue Exception
-    redirect_to invoice_path, notice: 'Invoice failed.'
-  else
-    redirect_to invoice_path, notice: "#{count} #{group} successfully invoiced"
-  end
 
-  # GET /members
-  # GET /members.json
+
+# GET /members
+# GET /members.json
   def index
     @search = Member.search(params[:q])
     @members_pdf= @search.result.order("id ASC")

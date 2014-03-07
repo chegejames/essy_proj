@@ -1,5 +1,11 @@
 EssyProj::Application.routes.draw do
 
+  get "invoice/index"
+
+  get "invoice/create_invoice"
+
+  match 'invoice_from_api' =>  "invoice_api#invoice"
+
   resources :bank_accounts
 
 
@@ -25,11 +31,10 @@ EssyProj::Application.routes.draw do
   end
   resources :payment_plans
 
-  match 'invoice' => 'members#invoice'
 
   match 'search' => 'members#search'
 
-  match 'create_invoice/:group' => 'members#create_invoice', :as => "create_invoice"
+
 
 
 

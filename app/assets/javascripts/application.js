@@ -16,3 +16,4 @@
 //= require bootstrap
 //= require admin
 //= require turbolinks
+//= require invoice

@@ -1,0 +1,7 @@
+class InvoiceApiController < ApplicationController
+  def parse
+  end
+
+  def invoice
+  end
+end
