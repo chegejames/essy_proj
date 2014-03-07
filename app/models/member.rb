@@ -72,7 +72,7 @@ class Member < ActiveRecord::Base
         if magistrate.payments.empty?
           magistrate.deactivate_member
           deactivated += 1
-        elsif magistrate.payments.last.not_paid_this_year?
+        elsif magistrate.payments.last.not_paid_this_month?
           count += 1
           amount_to_pay = PaymentPlan.last.magistrate
           magistrate.payments.create!(:invoice => amount_to_pay, :amount => amount_to_pay, :balance => 0, :date => Time.now.to_date, :region => magistrate.region)
@@ -94,7 +94,7 @@ class Member < ActiveRecord::Base
         if kadhi.payments.empty?
           kadhi.deactivate_member
           deactivated+=1
-        elsif kadhi.payments.last.not_paid_this_year?
+        elsif kadhi.payments.last.not_paid_this_month?
           count += 1
           amount_to_pay = PaymentPlan.last.kadhi
           kadhi.payments.create!(:invoice => amount_to_pay, :amount => amount_to_pay, :balance => 0, :date => Time.now.to_date, :region => kadhi.region)
