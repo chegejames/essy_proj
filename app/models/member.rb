@@ -75,7 +75,7 @@ class Member < ActiveRecord::Base
         elsif magistrate.payments.last.not_paid_this_year?
           count += 1
           amount_to_pay = PaymentPlan.last.magistrate
-          magistrate.payments.create(:invoice => amount_to_pay, :amount => amount_to_pay, :balance => 0, :date => Time.now.to_date, :region => magistrate.region)
+          magistrate.payments.create!(:invoice => amount_to_pay, :amount => amount_to_pay, :balance => 0, :date => Time.now.to_date, :region => magistrate.region)
         elsif magistrate.payments.last.paid_this_month?
           already_paid +=1
         end
@@ -97,7 +97,7 @@ class Member < ActiveRecord::Base
         elsif kadhi.payments.last.not_paid_this_year?
           count += 1
           amount_to_pay = PaymentPlan.last.kadhi
-          kadhi.payments.create(:invoice => amount_to_pay, :amount => amount_to_pay, :balance => 0, :date => Time.now.to_date, :region => kadhi.region)
+          kadhi.payments.create!(:invoice => amount_to_pay, :amount => amount_to_pay, :balance => 0, :date => Time.now.to_date, :region => kadhi.region)
         elsif kadhi.payments.last.paid_this_month?
           already_paid +=1
         end
