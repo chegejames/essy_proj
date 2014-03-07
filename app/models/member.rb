@@ -1,6 +1,6 @@
 class Member < ActiveRecord::Base
   attr_accessible :designation, :first_name, :last_name, :region, :date, :active, :balance
-  has_many :payments, :dependent => :destroy
+  has_many :payments, :order => 'date ASC', :dependent => :destroy
 
   acts_as_paranoid
 
